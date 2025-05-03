@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foreign Language Academy GH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Styles de base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: white;
+      color: black;
+      line-height: 1.6;
+    }
+    
+    /* Barre de navigation améliorée */
+    .navbar {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      padding: 0 2rem;
+      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+    
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .app-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      padding: 1rem 0;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-tab {
+      position: relative;
+    }
+    
+    .nav-tab a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 1.5rem 1.2rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-tab a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #eb9234;
+    }
+    
+    .nav-tab a.active {
+      color: #eb9234;
+      font-weight: 600;
+    }
+    
+    .nav-tab a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #eb9234;
+    }
+    
+    /* Section d'accueil améliorée */
+    .welcome-container {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://media.istockphoto.com/id/520943786/photo/four-students-studying-together-at-the-library.jpg?s=612x612&w=0&k=20&c=jyHlKe1jyd4Il2h9puyAA-6-7FqfeAt5cw2IEcB0j3g=');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      animation: zoomEffect 20s infinite alternate;
+    }
+    
+    @keyframes zoomEffect {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(13, 9, 130, 0.8) 0%, rgba(26, 21, 160, 0.7) 100%);
+      z-index: -1;
+    }
+    
+    .welcome-message {
+      font-size: 2.5rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .login-btn {
+      background-color: #eb9234;
+      color: white;
+      box-shadow: 0 4px 8px rgba(235, 146, 52, 0.3);
+    }
+    
+    .login-btn:hover {
+      background-color: #e08528;
+      transform: translateY(-2px);
+    }
+    
+    .create-btn {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+    }
+    
+    .create-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    /* Contenu principal amélioré */
+    .content {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #0d0982;
+      position: relative;
+      text-shadow: 1px 1px 2px rgba(13,9,130,0.1);
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #0d0982, #eb9234);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Grille d'articles améliorée */
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .article-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(13, 9, 130, 0.1);
+      position: relative;
+    }
+    
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(13,9,130,0.03) 0%, rgba(235,146,52,0.03) 100%);
+      z-index: 0;
+    }
+    
+    .article-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .article-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+    
+    .article-card:hover .article-image {
+      transform: scale(1.05);
+    }
+    
+    .article-content {
+      padding: 1.5rem;
+      position: relative;
+      z-index: 1;
+      background: white;
+    }
+    
+    .article-date {
+      display: block;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .article-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #0d0982;
+      transition: color 0.3s ease;
+    }
+    
+    .article-card:hover .article-title {
+      color: #eb9234;
+    }
+    
+    .article-excerpt {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    .read-more {
+      color: #eb9234;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .read-more::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #eb9234;
+      transition: width 0.3s ease;
+    }
+    
+    .read-more:hover::after {
+      width: 100%;
+    }
+    
+    .read-more::before {
+      content: '→';
+      margin-left: 5px;
+      transition: margin-left 0.3s ease;
+    }
+    
+    .read-more:hover::before {
+      margin-left: 10px;
+    }
+    
+    /* Section Programme améliorée */
+    .program-section {
+      background: linear-gradient(135deg, #0d0982 0%, #120d9a 100%);
+      color: white;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(13,9,130,0.2);
+    }
+    
+    .program-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .program-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .program-subtitle {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    
+    .program-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+    
+    .program-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(235, 146, 52, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .program-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .program-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #eb9234;
+      transition: transform 0.3s ease;
+    }
+    
+    .program-item:hover .program-icon {
+      transform: scale(1.1);
+    }
+    
+    .program-name {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .program-desc {
+      opacity: 0.9;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #eb9234;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(235, 146, 52, 0.4);
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+    
+    .cta-button:hover {
+      background-color: #e08528;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(235, 146, 52, 0.5);
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Section Hébergement améliorée */
+    .housing-section {
+      background-color: white;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(13, 9, 130, 0.1);
+      position: relative;
+    }
+    
+    .housing-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .housing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .housing-card {
+      border: 1px solid rgba(13, 9, 130, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: white;
+      position: relative;
+    }
+    
+    .housing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(13,9,130,0.03) 0%, rgba(235,146,52,0.03) 100%);
+      z-index: 0;
+    }
+    
+    .housing-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .housing-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+    
+    .housing-card:hover .housing-image {
+      transform: scale(1.05);
+    }
+    
+    .housing-content {
+      padding: 1.5rem;
+      position: relative;
+      z-index: 1;
+      background: white;
+    }
+    
+    .housing-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #0d0982;
+      transition: color 0.3s ease;
+    }
+    
+    .housing-card:hover .housing-title {
+      color: #eb9234;
+    }
+    
+    .housing-price {
+      font-weight: 600;
+      color: #eb9234;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .housing-desc {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Pied de page amélioré */
+    .app-footer {
+      background: linear-gradient(135deg, #0d0982 0%, #080561 100%);
+      color: white;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+    
+    .app-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+    }
+    
+    .footer-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-tab {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .tab-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #eb9234;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .tab-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #eb9234;
+    }
+    
+    .tab-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .tab-content a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 1rem;
+    }
+    
+    .tab-content a::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #eb9234;
+    }
+    
+    .tab-content a:hover {
+      color: white;
+      padding-left: 1.5rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .nav-container {
+        flex-direction: column;
+      }
+      
+      .app-name {
+        padding: 1rem 0;
+      }
+      
+      .nav-tabs {
+        width: 100%;
+        justify-content: space-around;
+      }
+      
+      .nav-tab a {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .welcome-message {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        width: 80%;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .program-features, .housing-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-tabs {
+        flex-wrap: wrap;
+      }
+      
+      .nav-tab {
+        width: 50%;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .nav-tab {
+        width: 100%;
+      }
+      
+      .nav-tab a {
+        padding: 0.8rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation avec onglets -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="app-name">Foreign Language Academy GH</h1>
+      <ul class="nav-tabs">
+        <li class="nav-tab"><a href="index.html" class="active">Menu</a></li>
+        <li class="nav-tab"><a href="programmes.html">Programmes</a></li>
+        <li class="nav-tab"><a href="etudes-bourses.html">Études à l'étranger</a></li>
+        <li class="nav-tab"><a href="contactez-nous.html">Contacts</a></li>
+        <li class="nav-tab"><a href="inscription.html">Inscription</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Section d'accueil -->
+  <div class="welcome-container">
+    <div class="background-image"></div>
+    <div class="overlay"></div>
+    <p class="welcome-message">Votre voyage vers la maîtrise des langues commence ici</p>
+    <div class="action-buttons">
+      <a href="contactez-nous.html" class="btn login-btn">Nous contacter</a>
+      <a href="programmes.html" class="btn create-btn">Nos programmes</a>
+    </div>
+  </div>
+  
+  <!-- Contenu principal -->
+  <div class="content">
+    <h2 class="section-title">FOREIGN LANGUAGE ACADEMY GH</h2>
+    
+    <!-- Grille d'articles -->
+    <div class="article-grid">
+      <!-- Article 1 -->
+      <div class="article-card">
+        <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="article-content">
+          <span class="article-date">Ashongman Estates, Accra</span>
+          <h3 class="article-title">Apprenez l'anglais comme un natif</h3>
+          <p class="article-excerpt">Notre méthode Headway de l'Université d'Oxford vous permet d'acquérir une maîtrise complète de la langue anglaise...</p>
+          <a href="english.html" class="read-more">En savoir plus</a>
+        </div>
+      </div>
+      
+      <!-- Article 2 -->
+      <div class="article-card">
+        <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="article-content">
+          <h3 class="article-title">Programme de français pour anglophones</h3>
+          <p class="article-excerpt">Découvrez notre approche immersive pour apprendre le français rapidement et efficacement.</p>
+          <a href="french.html" class="read-more">Découvrir</a>
+        </div>
+      </div>
+      
+      <!-- Article 3 -->
+      <div class="article-card">
+        <div class="article-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1714397507649-3b3890d238a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHx8');"></div>
+        <div class="article-content">
+          <h3 class="article-title">Services d'accompagnement pour études à l'étranger</h3>
+          <p class="article-excerpt">Nous vous guidons pour étudier aux USA, Canada et en Malaisie avec notre expertise...</p>
+          <a href="abroad.html" class="read-more">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section Programme -->
+    <div class="program-section">
+      <span class="feature-badge">Notre Programme</span>
+      <h2 class="program-title">PROGRAMME DE FORMATION</h2>
+      <p class="program-subtitle">Faites-vous former sur la durée de votre choix; à partir d'un (1) mois jusqu'à douze (12) mois. Cours réguliers ou intensifs.</p>
+      
+      <div class="program-features">
+        <div class="program-item">
+          <div class="program-icon"><i class="fas fa-clock"></i></div>
+          <h3 class="program-name">Durée flexible</h3>
+          <p class="program-desc">De 1 à 12 mois selon vos besoins et disponibilités.</p>
+        </div>
+        
+        <div class="program-item">
+          <div class="program-icon"><i class="fas fa-book"></i></div>
+          <h3 class="program-name">Méthode Headway</h3>
+          <p class="program-desc">Matériel pédagogique de l'Université d'Oxford pour un apprentissage optimal.</p>
+        </div>
+        
+        <div class="program-item">
+          <div class="program-icon"><i class="fas fa-certificate"></i></div>
+          <h3 class="program-name">Certification</h3>
+          <p class="program-desc">Attestation de fin de formation et préparation aux tests internationaux.</p>
+        </div>
+      </div>
+      
+      <a href="programmes.html" class="cta-button">Voir les programmes</a>
+    </div>
+    
+    <!-- Section Extra-scolaire -->
+    <div class="article-card" style="max-width: 1000px; margin: 0 auto 4rem;">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1647215480241-b150d74c75c0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2Fub3B5JTIwd2FsayUyMGdoYW5hfGVufDB8fDB8fHww'); height: 300px;"></div>
+      <div class="article-content">
+        <h3 class="article-title">Programme Extra-scolaire de Pratique de l'Anglais</h3>
+        <p class="article-excerpt">La langue s'acquiert par la pratique. Nous vous exposons à l'anglais dans des situations réelles à travers des activités culturelles, des concerts et des sorties touristiques.</p>
+        <a href="extracurricular.html" class="read-more">Découvrir nos activités</a>
+      </div>
+    </div>
+    
+    <!-- Section Hébergement -->
+    <div class="housing-section">
+      <h2 class="section-title">OPTIONS DE LOGEMENTS</h2>
+      
+      <div class="housing-grid">
+        <!-- Option 1 -->
+        <div class="housing-card">
+          <div class="housing-image" style="background-image: url('https://images.unsplash.com/photo-1721742736276-1eb1374657a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8');"></div>
+          <div class="housing-content">
+            <h3 class="housing-title">Studio sur campus</h3>
+            <span class="housing-price">À partir de 35.000Fcfa</span>
+            <p class="housing-desc">Chambre avec lit, ventilateur, table d'étude et chaise; cuisine, douche et toilettes publiques.</p>
+            <a href="housing.html" class="read-more">Voir détails</a>
+          </div>
+        </div>
+        
+        <!-- Option 2 -->
+        <div class="housing-card">
+          <div class="housing-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1733514432820-357a6812d754?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cmVhbCUyMGVzdGF0ZSUyMHNpbmdsZSUyMHJvb218ZW58MHx8MHx8fDA%3D');"></div>
+          <div class="housing-content">
+            <h3 class="housing-title">Studio climatisé</h3>
+            <span class="housing-price">À partir de 90.000Fcfa</span>
+            <p class="housing-desc">Chambre climatisée avec télévision, frigo, douche et toilettes privées; cuisine publique.</p>
+            <a href="housing.html" class="read-more">Voir détails</a>
+          </div>
+        </div>
+        
+        <!-- Option 3 -->
+        <div class="housing-card">
+          <div class="housing-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+          <div class="housing-content">
+            <h3 class="housing-title">Studio américain</h3>
+            <span class="housing-price">À partir de 250.000Fcfa</span>
+            <p class="housing-desc">Studio entièrement équipé avec tout le confort moderne pour un séjour premium.</p>
+            <a href="housing.html" class="read-more">Voir détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pied de page -->
+  <footer class="app-footer">
+    <div class="footer-tabs">
+      <!-- Onglet About -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-info-circle"></i>
+          <span>À PROPOS</span>
+        </div>
+        <div class="tab-content">
+          <a href="about.html">Notre académie</a>
+          <a href="team.html">Notre équipe</a>
+        </div>
+      </div>
+      
+      <!-- Onglet Programmes -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-book"></i>
+          <span>PROGRAMMES</span>
+        </div>
+        <div class="tab-content">
+          <a href="english.html">Anglais</a>
+          <a href="french.html">Français</a>
+          <a href="etudes-bourses.html">Études à l'étranger</a>
+        </div>
+      </div>
+      
+      <!-- Onglet Contact -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>CONTACT</span>
+        </div>
+        <div class="tab-content">
+          <a href="contactez-nous.html">Nous contacter</a>
+          <a href="map.html">Nous trouver</a>
+        </div>
+      </div>
+      
+      <!-- Onglet Réservations -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-calendar-alt"></i>
+          <span>RÉSERVATIONS</span>
+        </div>
+        <div class="tab-content">
+          <a href="inscription.html">S'inscrire</a>
+          <a href="housing.html">Hébergement</a>
+        </div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+      <p>Foreign Language Academy GH © 2025 | Numéro d'agrément : CS152770924</p>
+      <p>Ashongman Estates, Accra Ghana | +233 536725050 /+233 202165231</p>
+      <p>flaghaccra@gmail.com</p>
+    </div>
+  </footer>
+</body>
+</html>

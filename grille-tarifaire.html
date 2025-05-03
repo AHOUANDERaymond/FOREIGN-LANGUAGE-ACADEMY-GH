@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grille Tarifaire - Anglais pour la Communication</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #e74c3c;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h2 {
+            color: #1e3c72;
+            margin: 40px 0 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .pricing-table th {
+            background-color: #1e3c72;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .pricing-table tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .pricing-table td:first-child {
+            font-weight: 600;
+            text-align: left;
+            background-color: #2a5298;
+            color: white;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .test-table {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        
+        .test-table th, .test-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .test-table th {
+            background-color: #1e3c72;
+            color: white;
+        }
+        
+        .test-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .note {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ANGLAIS POUR LA COMMUNICATION</h1>
+    
+    <table class="pricing-table">
+        <thead>
+            <tr>
+                <th>Durée</th>
+                <th>Régulier</th>
+                <th>Intensif</th>
+                <th>En Ligne</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 MOIS</td>
+                <td>65.000 FCFA</td>
+                <td>98.000 FCFA</td>
+                <td class="highlight">120.000 FCFA</td>
+            </tr>
+            <tr>
+                <td>2 MOIS</td>
+                <td>102.000 FCFA</td>
+                <td>160.000 FCFA</td>
+                <td class="highlight">210.000 FCFA</td>
+            </tr>
+            <tr>
+                <td>3 MOIS</td>
+                <td>139.000 FCFA</td>
+                <td>240.000 FCFA</td>
+                <td class="highlight">300.000 FCFA</td>
+            </tr>
+            <tr>
+                <td>6 MOIS</td>
+                <td>264.000 FCFA</td>
+                <td>369.000 FCFA</td>
+                <td>Foreign Language</td>
+            </tr>
+            <tr>
+                <td>9 MOIS</td>
+                <td>348.000 FCFA</td>
+                <td>474.000 FCFA</td>
+                <td>Academy</td>
+            </tr>
+            <tr>
+                <td>12 MOIS</td>
+                <td>425.000 FCFA</td>
+                <td>536.000 FCFA</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>Formation aux Tests Internationaux</h2>
+    
+    <table class="test-table">
+        <thead>
+            <tr>
+                <th>Test</th>
+                <th>Frais de Formation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TOEFL</td>
+                <td>150.000 FCFA</td>
+            </tr>
+            <tr>
+                <td>IELTS</td>
+                <td>150.000 FCFA</td>
+            </tr>
+            <tr>
+                <td>PROFICIENCY</td>
+                <td>80.000 FCFA</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p class="note">* Les prix sont indiqués en FCFA. Les formations en ligne incluent un accès complet à la plateforme d'apprentissage.</p>
+    <footer class="guide-footer">
+        <div class="footer-buttons">
+            
+            <a href="index.html" class="footer-button">
+                <i class="fas fa-home"></i> BACK TO MENU
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

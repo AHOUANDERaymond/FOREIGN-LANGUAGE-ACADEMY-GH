@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme de Transfert de Diplôme Américain (ADTP) - Partenariat INTI et Nilai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #e74c3c;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            color: #1e3c72;
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #e74c3c;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .university-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .university-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .university-header {
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Couleurs personnalisées pour chaque université */
+        .inti-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        
+        .nilai-header {
+            background: linear-gradient(135deg, #006b4d 0%, #00a572 100%);
+        }
+        
+        .university-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .university-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .university-logo img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .university-body {
+            padding: 2rem;
+        }
+        
+        .advantage-list {
+            list-style-type: none;
+        }
+        
+        .advantage-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .advantage-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .advantage-icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+        
+        /* Couleurs des icônes correspondantes */
+        .inti-icon {
+            color: #2a5298;
+        }
+        
+        .nilai-icon {
+            color: #00a572;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-image {
+            flex: 1;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-content {
+            flex: 1;
+            padding: 3rem;
+        }
+        
+        .program-title {
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-box h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+        
+        .majors-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 10px;
+        }
+        
+        .majors-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .majors-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .majors-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .majors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .major-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .major-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .major-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .major-card h3 i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+        
+        .testimonials {
+            margin: 4rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 1rem;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(30, 60, 114, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: serif;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        .testimonial-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .slick-dots li button:before {
+            font-size: 12px;
+            color: #1e3c72;
+        }
+        
+        .slick-dots li.slick-active button:before {
+            color: #e74c3c;
+        }
+        
+        .contact-section {
+            background-color: #1e3c72;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+        
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 992px) {
+            .program-card {
+                flex-direction: column;
+            }
+            
+            .program-image {
+                min-height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .program-content {
+                padding: 2rem;
+            }
+            
+            .program-title {
+                font-size: 1.8rem;
+            }
+            
+            .universities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .program-card {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+}
+
+.program-image {
+    flex: 1;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+
+.program-content {
+    flex: 1;
+    padding: 3rem;
+}
+
+.features-container {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.features-grid {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.feature-box {
+    flex: 1;
+    min-width: 200px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 992px) {
+    .program-card {
+        flex-direction: column;
+    }
+    
+    .program-image {
+        min-height: 300px;
+        order: -1;
+    }
+    
+    .features-grid {
+        flex-wrap: wrap;
+    }
+    
+    .feature-box {
+        min-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-box {
+        min-width: 100%;
+    }
+}
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+</head>
+<body>
+    <header class="header">
+        <h1>Programme de Transfert de Diplôme Américain (ADTP)</h1>
+        <p>Une passerelle exceptionnelle vers les universités américaines grâce au partenariat entre INTI et Nilai</p>
+        <a href="#contact" class="cta-button">Contactez-nous dès maintenant</a>
+    </header>
+    
+    <div class="container">
+        <div class="section-title">
+            <h2>Nos Universités Partenaires</h2>
+        </div>
+        
+        <div class="universities-grid">
+            <!-- Carte INTI -->
+            <div class="university-card">
+                <div class="university-header inti-header">
+                    <div class="university-logo">
+                        <img src="https://images.unsplash.com/photo-1705464623602-08eccb6c07cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fElOVEklMjAlMjBVTklWRVJTSVRZfGVufDB8fDB8fHww" alt="INTI University Logo">
+                    </div>
+                    <h3>INTI International University</h3>
+                    <p>Malaisie | Fondée en 1986</p>
+                </div>
+                <div class="university-body">
+                    <ul class="advantage-list">
+                        <li>
+                            <span class="advantage-icon inti-icon"><i class="fas fa-check"></i></span>
+                            <span>Classée parmi les meilleures universités privées de Malaisie</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon inti-icon"><i class="fas fa-check"></i></span>
+                            <span>Accréditations internationales reconnues</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon inti-icon"><i class="fas fa-check"></i></span>
+                            <span>Environnement multiculturel avec étudiants de 80 pays</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon inti-icon"><i class="fas fa-check"></i></span>
+                            <span>Installations modernes et campus de classe mondiale</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon inti-icon"><i class="fas fa-check"></i></span>
+                            <span>Corps professoral expérimenté avec des qualifications internationales</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Carte Nilai -->
+            <div class="university-card">
+                <div class="university-header nilai-header">
+                    <div class="university-logo">
+                        <img src="https://images.unsplash.com/photo-1597924540652-89427fb29b25?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fE5JTEFJJTIwVU5JVkVSU0lUWXxlbnwwfHwwfHx8MA%3D%3D" alt="Nilai University Logo">
+                    </div>
+                    <h3>Nilai University</h3>
+                    <p>Malaisie | Fondée en 1997</p>
+                </div>
+                <div class="university-body">
+                    <ul class="advantage-list">
+                        <li>
+                            <span class="advantage-icon nilai-icon"><i class="fas fa-check"></i></span>
+                            <span>Université privée réputée avec un fort accent international</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon nilai-icon"><i class="fas fa-check"></i></span>
+                            <span>Campus spacieux de 105 acres avec infrastructures modernes</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon nilai-icon"><i class="fas fa-check"></i></span>
+                            <span>Programmes conçus pour répondre aux besoins de l'industrie</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon nilai-icon"><i class="fas fa-check"></i></span>
+                            <span>Environnement d'apprentissage multiculturel et diversifié</span>
+                        </li>
+                        <li>
+                            <span class="advantage-icon nilai-icon"><i class="fas fa-check"></i></span>
+                            <span>Partenariats solides avec des universités internationales</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <h2>Le Programme ADTP - Votre Avantage Clé</h2>
+        </div>
+        
+        <div class="program-card">
+            <div class="program-content">
+                <h2 class="program-title">Une transition académique sans faille vers les USA</h2>
+                <p>Le programme American Degree Transfer Program (ADTP) est le fruit du partenariat stratégique entre INTI et Nilai University, offrant aux étudiants une voie optimale vers les universités américaines.</p>
+                
+                <div class="features-container">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+
+                    <div class="features-grid">
+                        
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <h3>Transfert Garanti</h3>
+                            <p>Transition simplifiée vers les universités américaines partenaires</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                            <h3>Économies Importantes</h3>
+                            <p>Jusqu'à 60% d'économies sur les deux premières années d'études</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-book"></i></div>
+                            <h3>Crédits Reconus</h3>
+                            <p>Tous les crédits acquis sont transférés sans perte</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                            <h3>Réseau Étendu</h3>
+                            <p>Accès à plus de 300 universités partenaires aux USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="majors-section">
+            <div class="majors-container">
+                <div class="majors-title">
+                    <h2>Domaines d'Études Disponibles</h2>
+                    <p>Choisissez parmi une large gamme de programmes académiques</p>
+                </div>
+                
+                <div class="majors-grid">
+                    <div class="major-card">
+                        <h3><i class="fas fa-laptop-code"></i> Informatique</h3>
+                        <p>Cybersécurité, Développement logiciel, Intelligence artificielle, Systèmes d'information</p>
+                    </div>
+                    <div class="major-card">
+                        <h3><i class="fas fa-briefcase"></i> Business</h3>
+                        <p>Finance, Marketing international, Entrepreneuriat, Gestion des ressources humaines</p>
+                    </div>
+                    <div class="major-card">
+                        <h3><i class="fas fa-robot"></i> Ingénierie</h3>
+                        <p>Génie civil, Génie électrique, Génie biomédical, Génie pétrolier, Aérospatiale</p>
+                    </div>
+                    <div class="major-card">
+                        <h3><i class="fas fa-flask"></i> Sciences</h3>
+                        <p>Biotechnologie, Biochimie, Sciences biomédicales, Microbiologie, Neuroscience</p>
+                    </div>
+                    <div class="major-card">
+                        <h3><i class="fas fa-heartbeat"></i> Santé</h3>
+                        <p>Diététique, Soins infirmiers, Technologie médicale, Sciences de l'alimentation</p>
+                    </div>
+                    <div class="major-card">
+                        <h3><i class="fas fa-brain"></i> Psychologie</h3>
+                        <p>Psychologie clinique, Psychologie scolaire, Psychologie industrielle, Neuroscience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <h2>Témoignages d'Étudiants</h2>
+        </div>
+        
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "J'ai choisi l'ADTP avec Nilai University pour son excellent rapport qualité-prix. Le transfert vers une université américaine s'est fait sans problème et j'ai pu économiser près de 50% sur mes frais de scolarité."
+                </div>
+                <div class="testimonial-author">David Müller</div>
+                <div class="testimonial-role">Étudiant en Commerce International</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Les conseillers d'INTI m'ont guidé à chaque étape, du choix des cours en Malaisie à l'inscription aux États-Unis. Leur expertise a fait toute la différence."
+                </div>
+                <div class="testimonial-author">Thomas Dubois</div>
+                <div class="testimonial-role">Étudiant en Marketing</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Nilai University m'a offert une excellente préparation pour le système universitaire américain. Les professeurs étaient très compétents et les cours bien structurés pour faciliter le transfert."
+                </div>
+                <div class="testimonial-author">Yuki Tanaka</div>
+                <div class="testimonial-role">Diplômée en Business Administration</div>
+            </div>
+        </div>
+        
+        <div id="contact" class="contact-section">
+            <h2>Prêt à commencer votre voyage académique ?</h2>
+            <p>Notre équipe est disponible pour répondre à toutes vos questions sur le programme ADTP et vous guider dans votre processus d'inscription.</p>
+            <a href="contactez-nous.html" class="cta-button" style="background-color: white; color: #1e3c72;">Contactez-nous</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.testimonials').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                autoplay: true,
+                autoplaySpeed: 5000
+            });
+        });
+    </script>
+ <footer class="guide-footer">
+    <div class="footer-buttons">
+        
+        <a href="index.html" class="footer-button">
+            <i class="fas fa-home"></i> BACK TO MENU
+        </a>
+    </div>
+</footer>
+</body>
+</html>

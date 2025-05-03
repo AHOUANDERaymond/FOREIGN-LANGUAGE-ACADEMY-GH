@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription en ligne - Foreign Language Academy GH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Styles de base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Barre de navigation */
+    .navbar {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    /* Conteneur principal */
+    .container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    
+    /* En-tête du formulaire */
+    .form-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .form-title {
+      font-size: 2.5rem;
+      color: #1e3c72;
+      margin-bottom: 1rem;
+    }
+    
+    .form-subtitle {
+      color: #666;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Formulaire */
+    .registration-form {
+      background: white;
+      border-radius: 10px;
+      padding: 3rem;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+      font-size: 1.3rem;
+      color: #1e3c72;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    /* Grille de champs */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    .required::after {
+      content: ' *';
+      color: #e74c3c;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+      outline: none;
+    }
+    
+    /* Section Programme */
+    .program-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .program-card {
+      border: 2px solid #eee;
+      border-radius: 8px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .program-card:hover {
+      border-color: #2a5298;
+      background-color: #f8faff;
+    }
+    
+    .program-card.selected {
+      border-color: #1e3c72;
+      background-color: #f0f5ff;
+    }
+    
+    .program-name {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1e3c72;
+    }
+    
+    .program-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    .program-duration {
+      display: inline-block;
+      background: #e8f0fe;
+      color: #1e3c72;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    
+    input[type="radio"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+    
+    /* Hébergement */
+    .housing-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .housing-option {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .housing-option label {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .housing-option label:hover {
+      border-color: #2a5298;
+    }
+    
+    .housing-option input:checked + label {
+      border-color: #1e3c72;
+      background-color: #f0f5ff;
+    }
+    
+    /* Documents */
+    .file-upload {
+      border: 2px dashed #ddd;
+      border-radius: 5px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .file-upload:hover {
+      border-color: #2a5298;
+      background-color: #f8faff;
+    }
+    
+    .upload-icon {
+      font-size: 2rem;
+      color: #2a5298;
+      margin-bottom: 1rem;
+    }
+    
+    .file-input {
+      display: none;
+    }
+    
+    /* Bouton de soumission */
+    .submit-btn {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 2rem auto 0;
+      font-weight: 600;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .registration-form {
+        padding: 2rem 1.5rem;
+      }
+      
+      .form-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <nav class="navbar">
+    <div class="logo">Foreign Language Academy GH</div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <div class="container">
+    <div class="form-header">
+      <h1 class="form-title">Formulaire d'Inscription en Ligne</h1>
+      <p class="form-subtitle">Remplissez ce formulaire pour vous inscrire à l'un de nos programmes. Un conseiller vous contactera dans les 24 heures pour finaliser votre inscription.</p>
+    </div>
+    
+    <form class="registration-form" id="registrationForm">
+      <!-- Section Informations Personnelles -->
+      <div class="form-section">
+        <h2 class="section-title">Informations Personnelles</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="firstName" class="required">Prénom</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="required">Nom</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div class="form-group">
+            <label for="birthDate" class="required">Date de naissance</label>
+            <input type="date" id="birthDate" name="birthDate" required>
+          </div>
+          <div class="form-group">
+            <label for="gender" class="required">Genre</label>
+            <select id="gender" name="gender" required>
+              <option value="">Sélectionner...</option>
+              <option value="male">Masculin</option>
+              <option value="female">Féminin</option>
+              <option value="other">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nationality" class="required">Nationalité</label>
+            <input type="text" id="nationality" name="nationality" required>
+          </div>
+          <div class="form-group">
+            <label for="idNumber">Numéro de pièce d'identité</label>
+            <input type="text" id="idNumber" name="idNumber">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section Coordonnées -->
+      <div class="form-section">
+        <h2 class="section-title">Coordonnées</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="email" class="required">Adresse email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="required">Téléphone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="address" class="required">Adresse</label>
+            <input type="text" id="address" name="address" required>
+          </div>
+          <div class="form-group">
+            <label for="city" class="required">Ville</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          <div class="form-group">
+            <label for="country" class="required">Pays</label>
+            <input type="text" id="country" name="country" required>
+          </div>
+          <div class="form-group">
+            <label for="emergencyContact">Contact d'urgence</label>
+            <input type="text" id="emergencyContact" name="emergencyContact">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section Programme -->
+      <div class="form-section">
+        <h2 class="section-title">Choix du Programme</h2>
+        <div class="program-options">
+          <div class="program-card">
+            <input type="radio" id="program1" name="program" value="Anglais Communication" class="program-radio" required>
+            <label for="program1">
+              <div class="program-name">Anglais pour la Communication</div>
+              <div class="program-desc">Maîtrisez l'anglais quotidien et professionnel avec notre méthode Headway</div>
+              <span class="program-duration">1-12 mois</span>
+            </label>
+          </div>
+          <div class="program-card">
+            <input type="radio" id="program2" name="program" value="Préparation Tests" class="program-radio">
+            <label for="program2">
+              <div class="program-name">Préparation aux Tests</div>
+              <div class="program-desc">TOEFL, IELTS et tests de compétence pour études à l'étranger</div>
+              <span class="program-duration">2-6 mois</span>
+            </label>
+          </div>
+          <div class="program-card">
+            <input type="radio" id="program3" name="program" value="Études à l'Étranger" class="program-radio">
+            <label for="program3">
+              <div class="program-name">Études à l'Étranger</div>
+              <div class="program-desc">Accompagnement complet pour études en USA, Canada, Malaisie</div>
+              <span class="program-duration">Sur mesure</span>
+            </label>
+          </div>
+          <div class="program-card">
+            <input type="radio" id="program4" name="program" value="Colonie de Vacances" class="program-radio">
+            <label for="program4">
+              <div class="program-name">Colonie de Vacances</div>
+              <div class="program-desc">Immersion linguistique ludique pour tous les âges</div>
+              <span class="program-duration">1-4 semaines</span>
+            </label>
+          </div>
+          <div class="program-card">
+            <input type="radio" id="program5" name="program" value="Travail à l'Étranger" class="program-radio">
+            <label for="program5">
+              <div class="program-name">Travail à l'Étranger</div>
+              <div class="program-desc">Placement professionnel international avec visa de travail</div>
+              <span class="program-duration">6-12 mois</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group" style="margin-top: 2rem;">
+          <label for="startDate">Date de début souhaitée</label>
+          <input type="date" id="startDate" name="startDate">
+        </div>
+        
+        <div class="form-group">
+          <label for="duration">Durée souhaitée (mois)</label>
+          <input type="number" id="duration" name="duration" min="1" max="12">
+        </div>
+        
+        <div class="form-group">
+          <label for="courseType">Type de cours</label>
+          <select id="courseType" name="courseType">
+            <option value="regular">Régulier (1 séance/jour)</option>
+            <option value="intensive">Intensif (2 séances/jour)</option>
+            <option value="weekend">Week-end</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Section Hébergement -->
+      <div class="form-section">
+        <h2 class="section-title">Options d'Hébergement</h2>
+        <div class="housing-options">
+          <div class="housing-option">
+            <input type="radio" id="housing1" name="housing" value="Studio Campus 25k">
+            <label for="housing1">
+              Studio sur campus (25.000Fcfa)
+            </label>
+          </div>
+          <div class="housing-option">
+            <input type="radio" id="housing2" name="housing" value="Studio Campus 35k">
+            <label for="housing2">
+              Studio avec salle de bain privée (35.000Fcfa)
+            </label>
+          </div>
+          <div class="housing-option">
+            <input type="radio" id="housing3" name="housing" value="Studio Campus 45k">
+            <label for="housing3">
+              Studio premium (45.000Fcfa)
+            </label>
+          </div>
+          <div class="housing-option">
+            <input type="radio" id="housing4" name="housing" value="Studio Hors Campus 90k">
+            <label for="housing4">
+              Studio climatisé (90.000Fcfa)
+            </label>
+          </div>
+          <div class="housing-option">
+            <input type="radio" id="housing5" name="housing" value="Studio Américain 250k">
+            <label for="housing5">
+              Studio américain (250.000Fcfa)
+            </label>
+          </div>
+          <div class="housing-option">
+            <input type="radio" id="housing6" name="housing" value="Pas d'hébergement">
+            <label for="housing6">
+              Pas d'hébergement nécessaire
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section Documents -->
+      <div class="form-section">
+        <h2 class="section-title">Documents à Fournir</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="photo">Photo d'identité</label>
+            <div class="file-upload" onclick="document.getElementById('photo').click()">
+              <div class="upload-icon"><i class="fas fa-camera"></i></div>
+              <p>Cliquez pour téléverser</p>
+              <input type="file" id="photo" name="photo" class="file-input" accept="image/*">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="idCopy">Copie pièce d'identité</label>
+            <div class="file-upload" onclick="document.getElementById('idCopy').click()">
+              <div class="upload-icon"><i class="fas fa-id-card"></i></div>
+              <p>Cliquez pour téléverser</p>
+              <input type="file" id="idCopy" name="idCopy" class="file-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="diploma">Dernier diplôme</label>
+            <div class="file-upload" onclick="document.getElementById('diploma').click()">
+              <div class="upload-icon"><i class="fas fa-graduation-cap"></i></div>
+              <p>Cliquez pour téléverser</p>
+              <input type="file" id="diploma" name="diploma" class="file-input">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section Commentaires -->
+      <div class="form-section">
+        <h2 class="section-title">Informations Complémentaires</h2>
+        <div class="form-group">
+          <label for="comments">Comment avez-vous connu notre académie?</label>
+          <select id="source" name="source">
+            <option value="">Sélectionner...</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+            <option value="friend">Recommandation</option>
+            <option value="search">Moteur de recherche</option>
+            <option value="other">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comments">Commentaires ou questions</label>
+          <textarea id="comments" name="comments" rows="4"></textarea>
+        </div>
+      </div>
+      
+      <!-- Bouton de soumission -->
+      <button type="submit" class="submit-btn">Soumettre l'inscription</button>
+    </form>
+  </div>
+
+  <script>
+    // Script pour gérer la soumission du formulaire
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Ici vous pouvez ajouter la logique pour envoyer les données au serveur
+      // Par exemple avec fetch() ou XMLHttpRequest
+      
+      alert('Votre inscription a été soumise avec succès! Un conseiller vous contactera bientôt.');
+      this.reset();
+      
+      // Pour une vraie implémentation, vous voudrez envoyer les données à votre backend
+      // const formData = new FormData(this);
+      // fetch('/api/register', { method: 'POST', body: formData })
+      //   .then(response => response.json())
+      //   .then(data => console.log('Success:', data))
+      //   .catch(error => console.error('Error:', error));
+    });
+    
+    // Amélioration UX pour les cartes de programme
+    const programCards = document.querySelectorAll('.program-card');
+    programCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const radio = this.querySelector('input[type="radio"]');
+        radio.checked = true;
+        programCards.forEach(c => c.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+  </script>
+ <footer class="guide-footer">
+  <div class="footer-buttons">
+    
+      <a href="index.html" class="footer-button">
+          <i class="fas fa-home"></i> BACK TO MENU
+      </a>
+  </div>
+</footer>
+</body>
+</html>
