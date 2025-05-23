@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Témoignages Alumni - Foreign Language Academy GH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Styles de base - Repris de votre CSS existant */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: white;
+      color: black;
+      line-height: 1.6;
+    }
+    
+    /* Barre de navigation - Identique à votre page principale */
+    .navbar {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      padding: 0 2rem;
+      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+    
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .app-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      padding: 1rem 0;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-tab {
+      position: relative;
+    }
+    
+    .nav-tab a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 1.5rem 1.2rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-tab a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #eb9234;
+    }
+    
+    .nav-tab a.active {
+      color: #eb9234;
+      font-weight: 600;
+    }
+    
+    .nav-tab a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #eb9234;
+    }
+    
+    /* Contenu principal */
+    .content {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #0d0982;
+      position: relative;
+      text-shadow: 1px 1px 2px rgba(13,9,130,0.1);
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #0d0982, #eb9234);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Section Alumni */
+    .alumni-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      color: #555;
+      font-size: 1.1rem;
+    }
+    
+    /* Formulaire de témoignage */
+    .testimonial-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 4rem;
+      border: 1px solid rgba(13,9,130,0.1);
+    }
+    
+    .form-title {
+      text-align: center;
+      color: #0d0982;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #0d0982;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: #0d0982;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(13,9,130,0.1);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(13,9,130,0.2);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(13,9,130,0.3);
+    }
+    
+    /* Témoignages existants */
+    .testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba(13,9,130,0.1);
+      position: relative;
+      transition: transform 0.3s;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 4rem;
+      color: rgba(13,9,130,0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    .testimonial-content {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      color: #555;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #0d0982;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 1rem;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .author-info h4 {
+      color: #0d0982;
+      margin-bottom: 0.2rem;
+    }
+    
+    .author-info p {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    .testimonial-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    
+    /* Section CTA */
+    .alumni-cta {
+      background: linear-gradient(135deg, rgba(13,9,130,0.05) 0%, rgba(235,146,52,0.05) 100%);
+      padding: 3rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 4rem;
+      border: 1px dashed #0d0982;
+    }
+    
+    .alumni-cta h3 {
+      color: #0d0982;
+      margin-bottom: 1rem;
+    }
+    
+    .alumni-cta p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #555;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .cta-btn {
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .primary-btn {
+      background-color: #0d0982;
+      color: white;
+      box-shadow: 0 4px 8px rgba(13,9,130,0.2);
+    }
+    
+    .primary-btn:hover {
+      background-color: #120d9a;
+      transform: translateY(-2px);
+    }
+    
+    .secondary-btn {
+      background-color: transparent;
+      color: #0d0982;
+      border: 2px solid #0d0982;
+    }
+    
+    .secondary-btn:hover {
+      background-color: rgba(13,9,130,0.05);
+      transform: translateY(-2px);
+    }
+    
+    /* Pied de page - Identique à votre page principale */
+    .app-footer {
+      background: linear-gradient(135deg, #0d0982 0%, #080561 100%);
+      color: white;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+    
+    .app-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+    }
+    
+    .footer-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-tab {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .tab-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #eb9234;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .tab-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #eb9234;
+    }
+    
+    .tab-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .tab-content a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 1rem;
+    }
+    
+    .tab-content a::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #eb9234;
+    }
+    
+    .tab-content a:hover {
+      color: white;
+      padding-left: 1.5rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .testimonials-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="app-name">Foreign Language Academy GH</h1>
+      <ul class="nav-tabs">
+        <li class="nav-tab"><a href="index.html">Menu</a></li>
+        <li class="nav-tab"><a href="programmes.html">Programmes</a></li>
+        <li class="nav-tab"><a href="etudes-bourses.html">Études à l'étranger</a></li>
+        <li class="nav-tab"><a href="contactez-nous.html">Contacts</a></li>
+        <li class="nav-tab"><a href="inscription.html">Inscription</a></li>
+        <li class="nav-tab"><a href="Alumini.html" class="active">Alumni</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <div class="content">
+    <h2 class="section-title">TÉMOIGNAGES DE NOS ALUMNI</h2>
+    
+    <p class="alumni-intro">
+      Découvrez ce que nos anciens étudiants disent de leur expérience à la Foreign Language Academy GH. 
+      Leurs réussites et témoignages sont la meilleure preuve de la qualité de notre enseignement.
+    </p>
+    
+    <!-- Formulaire pour soumettre un témoignage -->
+    <div class="testimonial-form">
+      <h3 class="form-title">Partagez votre expérience</h3>
+      <form id="alumniTestimonialForm">
+        <div class="form-group">
+          <label for="fullName">Nom complet</label>
+          <input type="text" id="fullName" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="graduationYear">Année de formation</label>
+          <input type="text" id="graduationYear" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="currentActivity">Que faites-vous actuellement ?</label>
+          <input type="text" id="currentActivity" class="form-control" required placeholder="Études, travail, etc.">
+        </div>
+        
+        <div class="form-group">
+          <label for="country">Pays actuel</label>
+          <input type="text" id="country" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial">Votre témoignage</label>
+          <textarea id="testimonial" class="form-control" required placeholder="Décrivez votre expérience à la FLA GH et comment elle a impacté votre parcours..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="photo">Photo (facultative)</label>
+          <input type="file" id="photo" class="form-control" accept="image/*">
+        </div>
+        
+        <button type="submit" class="submit-btn">Soumettre mon témoignage</button>
+      </form>
+    </div>
+    
+    <!-- Témoignages existants -->
+    <h3 style="text-align: center; color: #0d0982; margin: 3rem 0 1rem;">TÉMOIGNAGES RÉCENTS</h3>
+    
+    <div class="testimonials-container">
+      <!-- Témoignage 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          "La FLA GH a transformé ma maîtrise de l'anglais en seulement 6 mois. Grâce à leur méthode Headway, j'ai pu intégrer une université aux États-Unis sans avoir besoin de cours supplémentaires en anglais."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background-image: url('');"></div>
+          <div class="author-info">
+            <h4>Bricemen Dagba</h4>
+            <p>Beninoise</p>
+          </div>
+        </div>
+        <div class="testimonial-meta">
+          <span>Promotion 2025</span>
+          <span><i class="fas fa-star"></i> 5/5</span>
+        </div>
+      </div>
+      
+      <!-- Témoignage 2 -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          "Les professeurs sont exceptionnels et très patients. J'ai particulièrement apprécié les activités extra-scolaires qui m'ont permis de pratiquer l'anglais dans des situations réelles. Aujourd'hui, je travaille dans une entreprise internationale à Accra."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background-color: #eb9234;">KD</div>
+          <div class="author-info">
+            <h4>Ariel Bambola</h4>
+            <p>Ivoirien.</p>
+          </div>
+        </div>
+        <div class="testimonial-meta">
+          <span>Promotion 2024</span>
+          <span><i class="fas fa-star"></i> 4.8/5</span>
+        </div>
+      </div>
+      
+      <!-- Témoignage 3 -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          "Après avoir suivi le programme intensif de français, j'ai pu obtenir une bourse pour étudier au Canada. L'accompagnement pour les démarches administratives a été précieux. Je recommande vivement la FLA GH à tous ceux qui veulent maîtriser une nouvelle langue rapidement."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background-image: url('');"></div>
+          <div class="author-info">
+            <h4>Dembele Modibo</h4>
+            <p>Malian</p>
+          </div>
+        </div>
+        <div class="testimonial-meta">
+          <span>Promotion 2024</span>
+          <span><i class="fas fa-star"></i> 5/5</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section CTA -->
+    <div class="alumni-cta">
+      <h3>Faites partie de notre réseau d'alumni</h3>
+      <p>
+        Rejoignez notre communauté grandissante d'anciens étudiants à travers le monde. Bénéficiez d'avantages exclusifs et restez connectés.
+      </p>
+      <div class="cta-buttons">
+        <a href="inscription.html" class="cta-btn primary-btn">Devenir Alumni</a>
+        <a href="contactez-nous.html" class="cta-btn secondary-btn">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+  
+ 
+
+  <script>
+    // Script pour gérer la soumission du formulaire
+    document.getElementById('alumniTestimonialForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Récupérer les valeurs du formulaire
+      const fullName = document.getElementById('fullName').value;
+      const graduationYear = document.getElementById('graduationYear').value;
+      const currentActivity = document.getElementById('currentActivity').value;
+      const country = document.getElementById('country').value;
+      const testimonial = document.getElementById('testimonial').value;
+      const photo = document.getElementById('photo').files[0];
+      
+      // Ici, vous pourriez ajouter le code pour envoyer ces données à un serveur
+      // Pour l'exemple, nous allons juste afficher une alerte
+      
+      alert(`Merci ${fullName} pour votre témoignage ! Il sera examiné et publié prochainement.`);
+      
+      // Réinitialiser le formulaire
+      this.reset();
+    });
+  </script>
+</body>
+</html>
