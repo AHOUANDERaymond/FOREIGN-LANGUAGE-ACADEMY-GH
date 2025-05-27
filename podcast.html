@@ -1,76 +1,266 @@
-<!-- Section Podcasts -->
-<div class="podcast-section">
-  <h2 class="section-title">PODCASTS DE LA SEMAINE</h2>
-  <p class="section-subtitle">Découvrez nos activités hebdomadaires à travers nos podcasts</p>
-  
-  <div class="podcast-container">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcasts - Foreign Language Academy GH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reprenez tous les styles de votre index.html ici */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: white;
+      color: black;
+      line-height: 1.6;
+    }
+    
+    /* Barre de navigation */
+    .navbar {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      padding: 0 2rem;
+      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+    
+    /* ... (Reprenez tous les autres styles de votre index.html) ... */
+    
+    /* Styles spécifiques à la page Podcast */
+    .podcast-header {
+      background: linear-gradient(135deg, rgba(13, 9, 130, 0.8) 0%, rgba(235, 146, 52, 0.8) 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .podcast-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .podcast-subtitle {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+    
+    .podcast-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .podcast-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .podcast-image {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .podcast-content {
+      padding: 1.5rem;
+    }
+    
+    .podcast-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .podcast-name {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #0d0982;
+    }
+    
+    .podcast-desc {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    .listen-btn {
+      display: inline-block;
+      background-color: #eb9234;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .listen-btn:hover {
+      background-color: #e08528;
+    }
+    
+    .audio-player {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 30px;
+    }
+    
+    /* Styles responsives */
+    @media (max-width: 768px) {
+      .podcast-title {
+        font-size: 2rem;
+      }
+      
+      .podcast-subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+ 
+
+  <!-- En-tête de la page Podcast -->
+  <header class="podcast-header">
+    <h1 class="podcast-title">Podcasts Éducatifs</h1>
+    <p class="podcast-subtitle">Découvrez nos enregistrements audio pour améliorer votre apprentissage des langues où que vous soyez.</p>
+  </header>
+
+  <!-- Grille des podcasts -->
+  <div class="podcast-grid">
     <!-- Podcast 1 -->
     <div class="podcast-card">
-      <div class="podcast-header">
-        <div class="podcast-image" style="background-image: url('https://images.unsplash.com/photo-1593697909683-bccb1b9e68a4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9kY2FzdHxlbnwwfHwwfHx8MA%3D%3D');"></div>
-        <div class="podcast-info">
-          <h3 class="podcast-title">Atelier d'échange linguistique</h3>
-          <div class="podcast-meta">
-            <span class="podcast-date"><i class="fas fa-calendar-alt"></i> 20 Mai 2025</span>
-            <span class="podcast-duration"><i class="fas fa-clock"></i> 24:35</span>
-          </div>
-        </div>
-      </div>
-      <p class="podcast-description">Retour sur notre atelier d'échange linguistique hebdomadaire où étudiants anglophones et francophones se rencontrent pour pratiquer.</p>
-      <audio controls class="podcast-player">
-        <source src="podcast1.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-      </audio>
-      <div class="podcast-actions">
-        <a href="#" class="podcast-download"><i class="fas fa-download"></i> Télécharger</a>
-        <a href="#" class="podcast-share"><i class="fas fa-share-alt"></i> Partager</a>
+      <div class="podcast-image" style="background-image: url('https://images.unsplash.com/photo-1593697909683-bccb1b9e68a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+      <div class="podcast-content">
+        <span class="podcast-date">15 Juin 2025</span>
+        <h3 class="podcast-name">Conversation en anglais quotidienne</h3>
+        <p class="podcast-desc">Apprenez les expressions essentielles pour vos conversations quotidiennes en anglais.</p>
+        <audio controls class="audio-player">
+          <source src="podcast1.mp3" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'élément audio.
+        </audio>
+        <a href="podcast1.mp3" download class="listen-btn">Télécharger</a>
       </div>
     </div>
-    
+
     <!-- Podcast 2 -->
     <div class="podcast-card">
-      <div class="podcast-header">
-        <div class="podcast-image" style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9kY2FzdHxlbnwwfHwwfHx8MA%3D%3D');"></div>
-        <div class="podcast-info">
-          <h3 class="podcast-title">Visite culturelle à Jamestown</h3>
-          <div class="podcast-meta">
-            <span class="podcast-date"><i class="fas fa-calendar-alt"></i> 13 Mai 2025</span>
-            <span class="podcast-duration"><i class="fas fa-clock"></i> 32:10</span>
-          </div>
+      <div class="podcast-image" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+      <div class="podcast-content">
+        <span class="podcast-date">8 Juin 2025</span>
+        <h3 class="podcast-name">Grammaire française expliquée</h3>
+        <p class="podcast-desc">Décryptage des règles de grammaire française les plus complexes.</p>
+        <audio controls class="audio-player">
+          <source src="podcast2.mp3" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'élément audio.
+        </audio>
+        <a href="podcast2.mp3" download class="listen-btn">Télécharger</a>
+      </div>
+    </div>
+
+    <!-- Podcast 3 -->
+    <div class="podcast-card">
+      <div class="podcast-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+      <div class="podcast-content">
+        <span class="podcast-date">1 Juin 2025</span>
+        <h3 class="podcast-name">Préparation aux tests IELTS</h3>
+        <p class="podcast-desc">Conseils et astuces pour réussir haut la main votre test IELTS.</p>
+        <audio controls class="audio-player">
+          <source src="podcast3.mp3" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'élément audio.
+        </audio>
+        <a href="podcast3.mp3" download class="listen-btn">Télécharger</a>
+      </div>
+    </div>
+
+    <!-- Podcast 4 -->
+    <div class="podcast-card">
+      <div class="podcast-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+      <div class="podcast-content">
+        <span class="podcast-date">25 Mai 2025</span>
+        <h3 class="podcast-name">Interview avec un étudiant international</h3>
+        <p class="podcast-desc">Retour d'expérience sur les études à l'étranger et l'adaptation linguistique.</p>
+        <audio controls class="audio-player">
+          <source src="podcast4.mp3" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'élément audio.
+        </audio>
+        <a href="podcast4.mp3" download class="listen-btn">Télécharger</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pied de page (identique à votre index.html) -->
+  <footer class="app-footer">
+    <div class="footer-tabs">
+      <!-- Onglet About -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-info-circle"></i>
+          <span>À PROPOS</span>
+        </div>
+        <div class="tab-content">
+          <a href="about.html">Notre académie</a>
+          <a href="team.html">Notre équipe</a>
+          <a href="alumini.html">Alumini</a>
         </div>
       </div>
-      <p class="podcast-description">Immergez-vous dans notre visite culturelle du quartier historique de Jamestown, commentée en anglais et en français.</p>
-      <audio controls class="podcast-player">
-        <source src="podcast2.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-      </audio>
-      <div class="podcast-actions">
-        <a href="#" class="podcast-download"><i class="fas fa-download"></i> Télécharger</a>
-        <a href="#" class="podcast-share"><i class="fas fa-share-alt"></i> Partager</a>
+      
+      <!-- Onglet Programmes -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-book"></i>
+          <span>PROGRAMMES</span>
+        </div>
+        <div class="tab-content">
+          <a href="english.html">Anglais</a>
+          <a href="french.html">Français</a>
+          <a href="etudes-bourses.html">Études à l'étranger</a>
+        </div>
+      </div>
+      
+      <!-- Onglet Contact -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>CONTACT</span>
+        </div>
+        <div class="tab-content">
+          <a href="contactez-nous.html">Nous contacter</a>
+          <a href="map.html">Nous trouver</a>
+        </div>
+      </div>
+      
+      <!-- Onglet Réservations -->
+      <div class="footer-tab">
+        <div class="tab-header">
+          <i class="fas fa-calendar-alt"></i>
+          <span>RÉSERVATIONS</span>
+        </div>
+        <div class="tab-content">
+          <a href="inscription.html">S'inscrire</a>
+          <a href="housing.html">Hébergement</a>
+        </div>
       </div>
     </div>
     
-    <!-- Formulaire pour ajouter un nouveau podcast (optionnel, pour l'admin) -->
-    <div class="add-podcast">
-      <h3>Ajouter un nouveau podcast</h3>
-      <form id="podcast-form">
-        <div class="form-group">
-          <input type="text" id="podcast-title" placeholder="Titre du podcast" required>
-        </div>
-        <div class="form-group">
-          <textarea id="podcast-desc" placeholder="Description" required></textarea>
-        </div>
-        <div class="form-group">
-          <input type="date" id="podcast-date" required>
-        </div>
-        <div class="form-group">
-          <input type="file" id="podcast-audio" accept="audio/*" required>
-        </div>
-        <div class="form-group">
-          <input type="file" id="podcast-image" accept="image/*">
-        </div>
-        <button type="submit" class="submit-btn">Publier le podcast</button>
-      </form>
-    </div>
-  </div>
-</div>
+   
+  </footer>
+</body>
+</html>
