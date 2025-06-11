@@ -691,6 +691,112 @@
         padding: 0.8rem 0;
       }
     }
+
+     /* Nouvelle section Statistiques */
+    .stats-section {
+      background: linear-gradient(rgba(13, 9, 130, 0.9), rgba(13, 9, 130, 0.9)), 
+                  url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      padding: 5rem 2rem;
+      margin: 4rem 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(13, 9, 130, 0.2);
+    }
+
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(235, 146, 52, 0.1) 0%, rgba(13, 9, 130, 0.7) 100%);
+      z-index: 0;
+    }
+
+    .stats-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .stats-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: #eb9234;
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      color: #eb9234;
+      margin-bottom: 1rem;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      background: linear-gradient(to right, #eb9234, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    .stat-number::after {
+      content: '+';
+      position: absolute;
+      right: -1rem;
+      top: 0;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .stat-label {
+      font-size: 1.2rem;
+      color: white;
+      opacity: 0.9;
+    }
+
   </style>
 </head>
 <body>
@@ -724,6 +830,37 @@
   <!-- Contenu principal -->
   <div class="content">
     <h2 class="section-title">FOREIGN LANGUAGE ACADEMY GH</h2>
+
+    
+      <!-- Nouvelle section Statistiques -->
+      <div class="stats-section">
+        <h2 class="stats-title">NOTRE IMPACT EN CHIFFRES</h2>
+          <div class="stats-container">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="stat-number" id="students-count">1500</div>
+              <div class="stat-label">Étudiants formés</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-globe-africa"></i></div>
+              <div class="stat-number" id="countries-count">15</div>
+              <div class="stat-label">Pays représentés</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+              <div class="stat-number" id="teachers-count">28</div>
+              <div class="stat-label">Enseignants experts</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-plane-departure"></i></div>
+              <div class="stat-number" id="abroad-count">320</div>
+              <div class="stat-label">Étudiants à l'étranger</div>
+            </div>
+          </div>
+        </div>
     
     <!-- Grille d'articles -->
     <div class="article-grid">
