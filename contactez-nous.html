@@ -220,6 +220,40 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Style pour la page de remerciement */
+        .thank-you {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .thank-you h1 {
+            color: #1e3c72;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .thank-you p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .thank-you .home-btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .thank-you .home-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -231,7 +265,13 @@
     <div class="container">
         <div class="contact-form">
             <h2>Envoyez-nous un message</h2>
-            <form action="#" method="POST">
+            <form action="https://formsubmit.co/flaghaccra@gmail.com" method="POST">
+                <!-- Champs cachés pour configurer FormSubmit -->
+                <input type="hidden" name="_subject" value="Nouveau message de contact">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://votresite.com/thank_you.html">
+                <input type="hidden" name="_captcha" value="false">
+                
                 <div class="form-group">
                     <label for="name">Nom complet</label>
                     <input type="text" id="name" name="name" class="form-control" required>
@@ -267,71 +307,70 @@
             </form>
         </div>
         
-<div class="contact-info">
-    <h2>Nos coordonnées</h2>
-    
-    <div class="info-item">
-        <div class="info-icon">
-            <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <div class="info-content">
-            <h3>Adresse</h3>
-            <p>Ashongman Estates, Accra<br>Ghana</p>
-        </div>
-    </div>
-    
-    <div class="info-item">
-        <div class="info-icon">
-            <i class="fas fa-phone-alt"></i>
-        </div>
-        <div class="info-content">
-            <h3>Téléphone</h3>
-            <p>+233 536725050<br>+233 202165231</p>
-            <p>+233 537291027<br>+229 0164284866</p>
-
-        </div>
-    </div>
-    
-    <div class="info-item">
-        <div class="info-icon">
-            <i class="fas fa-envelope"></i>
-        </div>
-        <div class="info-content">
-            <h3>Email</h3>
-            <p>flaghaccra@gmail.com</p>
-        </div>
-    </div>
-    
-    <div class="info-item">
-        <div class="info-icon">
-            <i class="fas fa-clock"></i>
-        </div>
-        <div class="info-content">
-            <h3>Heures d'ouverture</h3>
-            <p>Lundi - Vendredi: 8h00 - 18h00<br>Samedi: 9h00 - 13h00</p>
-        </div>
-    </div>
-   
-    
-    <div class="footer-column">
-        <h3>Réseaux sociaux</h3>
-        <div class="footer-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <div class="map-container" style="margin-top: 1.5rem;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.123456789012!2d-0.123456!3d0.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMDcnMjQuNCJOIDDCsDA3JzI0LjQiVw!5e0!3m2!1sfr!2sus!4v1234567890123!5m2!1sfr!2sus" allowfullscreen="" loading="lazy" style="height: 200px;"></iframe>
+        <div class="contact-info">
+            <h2>Nos coordonnées</h2>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Adresse</h3>
+                    <p>Ashongman Estates, Accra<br>Ghana</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Téléphone</h3>
+                    <p>+233 536725050<br>+233 202165231</p>
+                    <p>+233 537291027<br>+229 0164284866</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Email</h3>
+                    <p>flaghaccra@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Heures d'ouverture</h3>
+                    <p>Lundi - Vendredi: 8h00 - 18h00<br>Samedi: 9h00 - 13h00</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.123456789012!2d-0.123456!3d0.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMDcnMjQuNCJOIDDCsDA3JzI0LjQiVw!5e0!3m2!1sfr!2sus!4v1234567890123!5m2!1sfr!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
     </div>
+    
     <footer class="guide-footer">
         <div class="footer-buttons">
             <a href="index.html" class="footer-button">
                 <i class="fas fa-home"></i> BACK TO MENU
             </a>
         </div>
-    </footer> 
-    </body>
-    </html>
+    </footer>
+</body>
+</html>
