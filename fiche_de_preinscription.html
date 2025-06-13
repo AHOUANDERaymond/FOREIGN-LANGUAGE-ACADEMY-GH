@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Préinscription - Foreign Language Academy GH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary: #1e3c72;
+      --secondary: #2a5298;
+      --accent: #f39c12;
+      --light: #f5f7fa;
+      --dark: #333;
+      --success: #2ecc71;
+      --error: #e74c3c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      min-height: 100vh;
+      color: var(--dark);
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .form-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 1s;
+    }
+    
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo i {
+      margin-right: 15px;
+      color: var(--accent);
+    }
+    
+    .form-title {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-subtitle {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    .registration-card {
+      background: white;
+      border-radius: 15px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    .required::after {
+      content: ' *';
+      color: var(--error);
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.2);
+      outline: none;
+    }
+    
+    .select-wrapper {
+      position: relative;
+    }
+    
+    .select-wrapper::after {
+      content: '\f078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      color: var(--primary);
+      pointer-events: none;
+    }
+    
+    .phone-input {
+      display: flex;
+    }
+    
+    .country-code {
+      flex: 0 0 120px;
+      margin-right: 10px;
+    }
+    
+    .phone-number {
+      flex: 1;
+    }
+    
+    .other-input {
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border: none;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-weight: 600;
+      margin-top: 1rem;
+      box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+      animation: fadeIn 1s;
+    }
+    
+    .success-icon {
+      font-size: 4rem;
+      color: var(--success);
+      margin-bottom: 1rem;
+      animation: bounceIn 1s;
+    }
+    
+    .success-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .success-text {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    
+    .error-message {
+      color: var(--error);
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    
+    .date-container {
+      margin-top: 1rem;
+    }
+    
+    .month-selector {
+      position: relative;
+    }
+    
+    .month-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      z-index: 10;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .month-option {
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .month-option:hover {
+      background: #f0f5ff;
+    }
+    
+    .date-options {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .date-option {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .date-option:hover {
+      border-color: var(--primary);
+    }
+    
+    .date-option.selected {
+      border-color: var(--primary);
+      background-color: #f0f5ff;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      .registration-card {
+        padding: 2rem;
+      }
+      
+      .form-title {
+        font-size: 1.8rem;
+      }
+      
+      .phone-input {
+        flex-direction: column;
+      }
+      
+      .country-code {
+        flex: 1;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      
+      .date-options {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-header">
+      <div class="logo">
+        <i class="fas fa-language"></i>
+        <span>FLA GH</span>
+      </div>
+      <h1 class="form-title">Formulaire de Préinscription</h1>
+      <p class="form-subtitle">Commencez votre parcours linguistique en 2 minutes</p>
+    </div>
+    
+    <div class="registration-card" id="registrationForm">
+      <form 
+        id="preRegistrationForm" 
+        action="https://formsubmit.co/flaghaccra@gmail.com" 
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Nouvelle préinscription FLA GH">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="?success=true">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" id="selectedDate" name="Date de début">
+        
+        <div class="form-group animate__animated animate__fadeIn">
+          <label for="lastName" class="required">Nom de famille</label>
+          <input type="text" id="lastName" name="Nom" required>
+        </div>
+        
+        <div class="form-group animate__animated animate__fadeIn animate__delay-1s">
+          <label for="firstName" class="required">Prénom(s)</label>
+          <input type="text" id="firstName" name="Prénom" required>
+        </div>
+        
+        <div class="form-group animate__animated animate__fadeIn animate__delay-1s">
+          <label for="formation" class="required">Type de formation</label>
+          <div class="select-wrapper">
+            <select id="formation" name="Formation" required>
+              <option value="">Sélectionnez...</option>
+              <option value="Anglais Communication">Anglais pour la Communication</option>
+              <option value="TOEFL">Préparation TOEFL</option>
+              <option value="IELTS">Préparation IELTS</option>
+              <option value="Proficiency">Cambridge Proficiency</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group animate__animated animate__fadeIn animate__delay-2s">
+          <label for="logement" class="required">Option de logement</label>
+          <div class="select-wrapper">
+            <select id="logement" name="Logement" required>
+              <option value="">Sélectionnez...</option>
+              <option value="Chambre individuelle">Chambre individuelle</option>
+              <option value="Chambre 2 personnes">2 personnes par chambre</option>
+              <option value="Chambre 3 personnes">3 personnes par chambre</option>
+              <option value="Pas de logement">Pas besoin de logement</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group animate__animated animate__fadeIn animate__delay-2s">
+          <label for="phone" class="required">Numéro WhatsApp</label>
+          <div class="phone-input">
+            <div class="country-code">
+              <div class="select-wrapper">
+                <select id="countryCode" name="Indicatif" required>
+                  <option value="">Pays...</option>
+                  <option value="+233" data-digits="9">Ghana (+233)</option>
+                  <option value="+225" data-digits="8">Côte d'Ivoire (+225)</option>
+                  <option value="+229" data-digits="8">Bénin (+229)</option>
+                  <option value="+226" data-digits="8">Burkina Faso (+226)</option>
+                  <option value="+227" data-digits="8">Niger (+227)</option>
+                  <option value="+228" data-digits="8">Togo (+228)</option>
+                  <option value="+237" data-digits="8">Cameroun (+237)</option>
+                  <option value="+242" data-digits="9">Congo (+242)</option>
+                  <option value="+243" data-digits="9">RDC (+243)</option>
+                  <option value="+221" data-digits="9">Sénégal (+221)</option>
+                  <option value="+223" data-digits="8">Mali (+223)</option>
+                  <option value="+234" data-digits="10">Nigeria (+234)</option>
+                  <option value="+212" data-digits="9">Maroc (+212)</option>
+                  <option value="+213" data-digits="9">Algérie (+213)</option>
+                  <option value="+216" data-digits="8">Tunisie (+216)</option>
+                  <option value="+33" data-digits="9">France (+33)</option>
+                  <option value="+1" data-digits="10">Canada/USA (+1)</option>
+                  <option value="+44" data-digits="10">UK (+44)</option>
+                  <option value="+32" data-digits="9">Belgique (+32)</option>
+                  <option value="+41" data-digits="9">Suisse (+41)</option>
+                </select>
+              </div>
+            </div>
+            <div class="phone-number">
+              <input type="tel" id="phone" name="Téléphone" placeholder="Numéro sans indicatif" required>
+              <div class="error-message" id="phoneError">Format incorrect pour ce pays</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group animate__animated animate__fadeIn animate__delay-3s">
+          <label for="niveau" class="required">Niveau d'études</label>
+          <div class="select-wrapper">
+            <select id="niveau" name="Niveau" required>
+              <option value="">Sélectionnez...</option>
+              <option value="Secondaire">Secondaire</option>
+              <option value="Bac">Baccalauréat</option>
+              <option value="Licence">Licence</option>
+              <option value="Master">Master</option>
+              <option value="Doctorat">Doctorat</option>
+              <option value="other">Autres (précisez)</option>
+            </select>
+          </div>
+          <input type="text" id="otherNiveau" name="Niveau (précisé)" class="other-input" placeholder="Veuillez préciser votre niveau">
+        </div>
+        
+        <div class="form-group animate__animated animate__fadeIn animate__delay-3s">
+          <label for="monthInput" class="required">Date de début souhaitée</label>
+          <div class="date-container">
+            <div class="month-selector">
+              <input type="text" id="monthInput" placeholder="Tapez le mois (ex: janvier)" autocomplete="off">
+              <div class="month-dropdown" id="monthDropdown"></div>
+            </div>
+            <div class="date-options" id="dateOptions"></div>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn pulse animate__animated animate__fadeIn animate__delay-4s">
+          <i class="fas fa-paper-plane"></i> Envoyer ma préinscription
+        </button>
+      </form>
+    </div>
+    
+    <div class="success-message" id="successMessage">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h2 class="success-title">Préinscription réussie !</h2>
+      <p class="success-text">Nous avons bien reçu votre demande. Un conseiller vous contactera sur WhatsApp dans les 24 heures.</p>
+      <button class="submit-btn" onclick="location.reload()">
+        <i class="fas fa-redo"></i> Nouvelle préinscription
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Liste des mois en français
+    const monthsFR = [
+      'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    
+    // Fonction pour trouver le premier lundi d'un mois
+    function getFirstMonday(year, month) {
+      const date = new Date(year, month, 1);
+      while (date.getDay() !== 1) {
+        date.setDate(date.getDate() + 1);
+      }
+      return new Date(date);
+    }
+    
+    // Fonction pour trouver le troisième lundi d'un mois
+    function getThirdMonday(year, month) {
+      const firstMonday = getFirstMonday(year, month);
+      const thirdMonday = new Date(firstMonday);
+      thirdMonday.setDate(firstMonday.getDate() + 14);
+      return thirdMonday;
+    }
+    
+    // Fonction pour formater la date en français
+    function formatDate(date) {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('fr-FR', options);
+    }
+    
+    // Fonction pour générer les options de mois
+    function generateMonthOptions() {
+      const monthDropdown = document.getElementById('monthDropdown');
+      monthDropdown.innerHTML = '';
+      
+      const currentYear = new Date().getFullYear();
+      const currentMonth = new Date().getMonth();
+      
+      // Générer les options pour les 12 prochains mois
+      for (let i = 0; i < 12; i++) {
+        const monthIndex = (currentMonth + i) % 12;
+        const year = currentYear + Math.floor((currentMonth + i) / 12);
+        const monthName = monthsFR[monthIndex];
+        
+        const option = document.createElement('div');
+        option.className = 'month-option';
+        option.textContent = `${monthName} ${year}`;
+        option.dataset.monthIndex = monthIndex;
+        option.dataset.year = year;
+        
+        option.addEventListener('click', function() {
+          document.getElementById('monthInput').value = this.textContent;
+          monthDropdown.style.display = 'none';
+          generateDateOptions(parseInt(this.dataset.monthIndex), parseInt(this.dataset.year));
+        });
+        
+        monthDropdown.appendChild(option);
+      }
+    }
+    
+    // Fonction pour générer les options de date
+    function generateDateOptions(monthIndex, year) {
+      const dateOptionsContainer = document.getElementById('dateOptions');
+      dateOptionsContainer.innerHTML = '';
+      dateOptionsContainer.style.display = 'grid';
+      
+      const firstMonday = getFirstMonday(year, monthIndex);
+      const thirdMonday = getThirdMonday(year, monthIndex);
+      
+      // Vérifier si le troisième lundi est dans le même mois
+      if (thirdMonday.getMonth() === monthIndex) {
+        createDateOption(dateOptionsContainer, firstMonday, 'Premier lundi');
+        createDateOption(dateOptionsContainer, thirdMonday, 'Troisième lundi');
+      } else {
+        // Si le mois n'a pas 5 semaines, ne montrer que le premier lundi
+        createDateOption(dateOptionsContainer, firstMonday, 'Premier lundi');
+      }
+      
+      // Sélectionner la première option par défaut
+      if (dateOptionsContainer.firstChild) {
+        dateOptionsContainer.firstChild.classList.add('selected');
+        document.getElementById('selectedDate').value = formatDate(firstMonday);
+      }
+    }
+    
+    // Fonction pour créer une option de date
+    function createDateOption(container, date, label) {
+      const option = document.createElement('div');
+      option.className = 'date-option';
+      option.dataset.date = date.toISOString();
+      
+      option.innerHTML = `
+        <div>${date.getDate()} ${monthsFR[date.getMonth()]} ${date.getFullYear()}</div>
+        <div>(${label})</div>
+      `;
+      
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.date-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        document.getElementById('selectedDate').value = formatDate(date);
+      });
+      
+      container.appendChild(option);
+    }
+    
+    // Initialisation du formulaire
+    document.addEventListener('DOMContentLoaded', function() {
+      // Gestion de l'affichage du message de succès
+      const urlParams = new URLSearchParams(window.location.search);
+      const success = urlParams.get('success');
+      
+      if (success) {
+        document.getElementById('registrationForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+      }
+      
+      // Générer les options de mois
+      generateMonthOptions();
+      
+      // Gestion de la recherche de mois
+      const monthInput = document.getElementById('monthInput');
+      const monthDropdown = document.getElementById('monthDropdown');
+      
+      monthInput.addEventListener('focus', function() {
+        monthDropdown.style.display = 'block';
+        generateMonthOptions();
+      });
+      
+      monthInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const options = monthDropdown.querySelectorAll('.month-option');
+        
+        options.forEach(option => {
+          if (option.textContent.toLowerCase().includes(searchTerm)) {
+            option.style.display = 'block';
+          } else {
+            option.style.display = 'none';
+          }
+        });
+      });
+      
+      // Fermer le dropdown quand on clique ailleurs
+      document.addEventListener('click', function(e) {
+        if (!monthInput.contains(e.target) && !monthDropdown.contains(e.target)) {
+          monthDropdown.style.display = 'none';
+        }
+      });
+      
+      // Gestion du champ "Autres" pour le niveau d'études
+      const niveauSelect = document.getElementById('niveau');
+      const otherInput = document.getElementById('otherNiveau');
+      
+      niveauSelect.addEventListener('change', function() {
+        if (this.value === 'other') {
+          otherInput.style.display = 'block';
+          otherInput.setAttribute('required', '');
+        } else {
+          otherInput.style.display = 'none';
+          otherInput.removeAttribute('required');
+        }
+      });
+      
+      // Validation du numéro de téléphone
+      const countryCode = document.getElementById('countryCode');
+      const phoneInput = document.getElementById('phone');
+      const phoneError = document.getElementById('phoneError');
+      
+      phoneInput.addEventListener('input', validatePhone);
+      countryCode.addEventListener('change', validatePhone);
+      
+      function validatePhone() {
+        const selectedOption = countryCode.options[countryCode.selectedIndex];
+        const requiredDigits = selectedOption.getAttribute('data-digits');
+        
+        if (!requiredDigits) return;
+        
+        const phoneNumber = phoneInput.value.replace(/\D/g, '');
+        const isValid = phoneNumber.length === parseInt(requiredDigits);
+        
+        if (phoneNumber && !isValid) {
+          phoneError.style.display = 'block';
+          phoneInput.style.borderColor = 'var(--error)';
+        } else {
+          phoneError.style.display = 'none';
+          phoneInput.style.borderColor = '#e0e0e0';
+        }
+      }
+    });
+
+    // Validation avant soumission
+    document.getElementById('preRegistrationForm').addEventListener('submit', function(e) {
+      // Vérification finale du numéro de téléphone
+      const countryCode = document.getElementById('countryCode');
+      const phoneInput = document.getElementById('phone');
+      const selectedOption = countryCode.options[countryCode.selectedIndex];
+      const requiredDigits = selectedOption.getAttribute('data-digits');
+      
+      if (requiredDigits) {
+        const phoneNumber = phoneInput.value.replace(/\D/g, '');
+        if (phoneNumber.length !== parseInt(requiredDigits)) {
+          e.preventDefault();
+          document.getElementById('phoneError').style.display = 'block';
+          phoneInput.style.borderColor = 'var(--error)';
+          phoneInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return false;
+        }
+      }
+      
+      // Vérifier qu'un mois est sélectionné
+      const monthInput = document.getElementById('monthInput');
+      if (!monthInput.value) {
+        e.preventDefault();
+        alert('Veuillez sélectionner un mois');
+        monthInput.focus();
+        return false;
+      }
+      
+      // Vérifier qu'une date est sélectionnée
+      if (!document.querySelector('.date-option.selected')) {
+        e.preventDefault();
+        alert('Veuillez sélectionner une date de début');
+        return false;
+      }
+      
+      return true;
+    });
+  </script>
+</body>
+</html>
