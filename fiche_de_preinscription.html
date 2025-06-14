@@ -532,10 +532,9 @@
       option.className = 'date-option';
       option.dataset.date = date.toISOString();
       
-      option.innerHTML = `
+      option.innerHTML = option.innerHTML = `
         <div>${date.getDate()} ${monthsFR[date.getMonth()]} ${date.getFullYear()}</div>
-        <div>(${label})</div>
-      `;
+    `;
       
       option.addEventListener('click', function() {
         document.querySelectorAll('.date-option').forEach(opt => {
