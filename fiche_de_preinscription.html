@@ -75,6 +75,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1s;
       transition: all 0.3s ease;
+      position: relative;
     }
     
     .form-group {
@@ -132,6 +133,8 @@
     .country-code {
       flex: 0 0 120px;
       margin-right: 10px;
+      position: relative;
+      z-index: 30;
     }
     
     .phone-number {
@@ -156,6 +159,8 @@
       font-weight: 600;
       margin-top: 1rem;
       box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+      position: relative;
+      z-index: 1;
     }
     
     .submit-btn:hover {
@@ -165,6 +170,13 @@
     
     .submit-btn:active {
       transform: translateY(1px);
+    }
+
+    .submit-btn:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
     }
     
     .success-message {
@@ -203,6 +215,8 @@
     
     .date-container {
       margin-top: 1rem;
+      position: relative;
+      z-index: 25;
     }
     
     .month-selector {
@@ -219,7 +233,7 @@
       background: white;
       border: 1px solid #ddd;
       border-radius: 8px;
-      z-index: 10;
+      z-index: 40;
       display: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
@@ -247,7 +261,9 @@
       padding: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      text-align: center;
+      text-align: left;
+      position: relative;
+      padding-left: 2.5rem;
     }
     
     .date-option:hover {
@@ -257,6 +273,75 @@
     .date-option.selected {
       border-color: var(--primary);
       background-color: #f0f5ff;
+    }
+
+    .date-option::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .date-option.selected::before {
+      border-color: var(--primary);
+      background-color: var(--primary);
+    }
+
+    /* Nouveaux styles pour la recherche de pays */
+    .country-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      z-index: 50;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .country-option {
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .country-option:hover {
+      background: #f0f5ff;
+    }
+    
+    .no-result {
+      padding: 10px;
+      color: #999;
+      font-style: italic;
+    }
+    
+    #countrySearch {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    #countrySearch:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.2);
+      outline: none;
+    }
+
+    .hidden-select {
+      display: none;
     }
     
     @media (max-width: 768px) {
@@ -304,7 +389,6 @@
   <div class="container">
     <div class="form-header">
       <div class="logo">
-        <!-- <i class="fas fa-language"></i> -->
         <span>FLA GH</span>
       </div>
       <h1 class="form-title">Formulaire de Préinscription</h1>
@@ -315,8 +399,6 @@
       <form 
         id="preRegistrationForm" 
         action="https://formsubmit.co/flaghaccra@gmail.com" 
-        action="https://formsubmit.co/dossour210@gmail.com" 
-
         method="POST"
       >
         <input type="hidden" name="_subject" value="Nouvelle préinscription FLA GH">
@@ -366,7 +448,8 @@
           <div class="phone-input">
             <div class="country-code">
               <div class="select-wrapper">
-                <select id="countryCode" name="Indicatif" required>
+                <input type="text" id="countrySearch" placeholder="Rechercher un pays..." autocomplete="off">
+                <select id="countryCode" name="Indicatif" required class="hidden-select">
                   <option value="">Pays...</option>
                   <option value="+233" data-digits="9">Ghana (+233)</option>
                   <option value="+225" data-digits="8">Côte d'Ivoire (+225)</option>
@@ -389,6 +472,7 @@
                   <option value="+32" data-digits="9">Belgique (+32)</option>
                   <option value="+41" data-digits="9">Suisse (+41)</option>
                 </select>
+                <div class="country-dropdown" id="countryDropdown"></div>
               </div>
             </div>
             <div class="phone-number">
@@ -425,7 +509,7 @@
           </div>
         </div>
         
-        <button type="submit" class="submit-btn pulse animate__animated animate__fadeIn animate__delay-4s">
+        <button type="submit" class="submit-btn pulse animate__animated animate__fadeIn animate__delay-4s" id="submitBtn" disabled>
           <i class="fas fa-paper-plane"></i> Envoyer ma préinscription
         </button>
       </form>
@@ -525,6 +609,7 @@
       if (dateOptionsContainer.firstChild) {
         dateOptionsContainer.firstChild.classList.add('selected');
         document.getElementById('selectedDate').value = formatDate(firstMonday);
+        document.getElementById('submitBtn').disabled = false;
       }
     }
     
@@ -534,9 +619,10 @@
       option.className = 'date-option';
       option.dataset.date = date.toISOString();
       
-      option.innerHTML = option.innerHTML = `
+      option.innerHTML = `
         <div>${date.getDate()} ${monthsFR[date.getMonth()]} ${date.getFullYear()}</div>
-    `;
+        <small>${label}</small>
+      `;
       
       option.addEventListener('click', function() {
         document.querySelectorAll('.date-option').forEach(opt => {
@@ -544,9 +630,71 @@
         });
         this.classList.add('selected');
         document.getElementById('selectedDate').value = formatDate(date);
+        document.getElementById('submitBtn').disabled = false;
       });
       
       container.appendChild(option);
+    }
+    
+    // Fonction pour générer les options de pays
+    function generateCountryOptions(filter = '') {
+      const countryDropdown = document.getElementById('countryDropdown');
+      countryDropdown.innerHTML = '';
+      const countryCodeSelect = document.getElementById('countryCode');
+      const options = countryCodeSelect.querySelectorAll('option');
+      let hasResults = false;
+      
+      options.forEach(option => {
+        if (option.value && option.textContent.toLowerCase().includes(filter.toLowerCase())) {
+          const countryOption = document.createElement('div');
+          countryOption.className = 'country-option';
+          countryOption.textContent = option.textContent;
+          countryOption.dataset.value = option.value;
+          countryOption.dataset.digits = option.getAttribute('data-digits');
+          
+          countryOption.addEventListener('click', function() {
+            document.getElementById('countrySearch').value = this.textContent;
+            countryCodeSelect.value = this.dataset.value;
+            countryDropdown.style.display = 'none';
+            validatePhone();
+          });
+          
+          countryDropdown.appendChild(countryOption);
+          hasResults = true;
+        }
+      });
+      
+      if (!hasResults && filter) {
+        const noResult = document.createElement('div');
+        noResult.className = 'no-result';
+        noResult.textContent = 'Aucun pays trouvé';
+        countryDropdown.appendChild(noResult);
+      }
+      
+      return hasResults;
+    }
+    
+    // Validation du numéro de téléphone
+    function validatePhone() {
+      const countryCode = document.getElementById('countryCode');
+      const phoneInput = document.getElementById('phone');
+      const phoneError = document.getElementById('phoneError');
+      
+      const selectedOption = countryCode.options[countryCode.selectedIndex];
+      const requiredDigits = selectedOption.getAttribute('data-digits');
+      
+      if (!requiredDigits) return;
+      
+      const phoneNumber = phoneInput.value.replace(/\D/g, '');
+      const isValid = phoneNumber.length === parseInt(requiredDigits);
+      
+      if (phoneNumber && !isValid) {
+        phoneError.style.display = 'block';
+        phoneInput.style.borderColor = 'var(--error)';
+      } else {
+        phoneError.style.display = 'none';
+        phoneInput.style.borderColor = '#e0e0e0';
+      }
     }
     
     // Initialisation du formulaire
@@ -606,31 +754,31 @@
         }
       });
       
-      // Validation du numéro de téléphone
-      const countryCode = document.getElementById('countryCode');
-      const phoneInput = document.getElementById('phone');
-      const phoneError = document.getElementById('phoneError');
+      // Gestion de la recherche de pays
+      const countrySearch = document.getElementById('countrySearch');
+      const countryDropdown = document.getElementById('countryDropdown');
+      const countryCodeSelect = document.getElementById('countryCode');
       
-      phoneInput.addEventListener('input', validatePhone);
-      countryCode.addEventListener('change', validatePhone);
+      countrySearch.addEventListener('focus', function() {
+        countryDropdown.style.display = 'block';
+        generateCountryOptions();
+      });
       
-      function validatePhone() {
-        const selectedOption = countryCode.options[countryCode.selectedIndex];
-        const requiredDigits = selectedOption.getAttribute('data-digits');
-        
-        if (!requiredDigits) return;
-        
-        const phoneNumber = phoneInput.value.replace(/\D/g, '');
-        const isValid = phoneNumber.length === parseInt(requiredDigits);
-        
-        if (phoneNumber && !isValid) {
-          phoneError.style.display = 'block';
-          phoneInput.style.borderColor = 'var(--error)';
-        } else {
-          phoneError.style.display = 'none';
-          phoneInput.style.borderColor = '#e0e0e0';
+      countrySearch.addEventListener('input', function() {
+        generateCountryOptions(this.value);
+      });
+      
+      // Fermer le dropdown quand on clique ailleurs
+      document.addEventListener('click', function(e) {
+        if (!countrySearch.contains(e.target) && !countryDropdown.contains(e.target)) {
+          countryDropdown.style.display = 'none';
         }
-      }
+      });
+      
+      // Validation du numéro de téléphone
+      const phoneInput = document.getElementById('phone');
+      phoneInput.addEventListener('input', validatePhone);
+      countryCodeSelect.addEventListener('change', validatePhone);
     });
 
     // Validation avant soumission
