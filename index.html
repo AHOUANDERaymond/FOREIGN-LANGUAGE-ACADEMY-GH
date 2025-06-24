@@ -554,6 +554,130 @@
       margin-bottom: 1.5rem;
     }
     
+    /* Nouvelle section Carrousel */
+    .student-carousel {
+      width: 100%;
+      margin: 4rem 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(13,9,130,0.2);
+    }
+    
+    .student-slides {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+    
+    .student-slide {
+      min-width: 100%;
+      position: relative;
+    }
+    
+    .student-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .student-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(13,9,130,0.8), transparent);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .student-caption h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .student-caption p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .student-btn {
+      display: inline-block;
+      background-color: #eb9234;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .student-btn:hover {
+      background-color: #e08528;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(235,146,52,0.4);
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    
+    .carousel-btn {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 1rem;
+    }
+    
+    .carousel-btn:hover {
+      background: rgba(235,146,52,0.8);
+    }
+    
+    .carousel-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background: #eb9234;
+      transform: scale(1.2);
+    }
+    
     /* Pied de page amélioré */
     .app-footer {
       background: linear-gradient(135deg, #0d0982 0%, #080561 100%);
@@ -680,6 +804,18 @@
         width: 50%;
         text-align: center;
       }
+      
+      .student-slide img {
+        height: 400px;
+      }
+      
+      .student-caption h3 {
+        font-size: 1.5rem;
+      }
+      
+      .student-caption p {
+        font-size: 1rem;
+      }
     }
     
     @media (max-width: 480px) {
@@ -689,6 +825,18 @@
       
       .nav-tab a {
         padding: 0.8rem 0;
+      }
+      
+      .student-slide img {
+        height: 300px;
+      }
+      
+      .student-caption {
+        padding: 1rem;
+      }
+      
+      .student-caption h3 {
+        font-size: 1.3rem;
       }
     }
 
@@ -796,7 +944,6 @@
       color: white;
       opacity: 0.9;
     }
-
   </style>
 </head>
 <body>
@@ -811,7 +958,6 @@
         <li class="nav-tab"><a href="contactez-nous.html">Contacts</a></li>
         <li class="nav-tab"><a href="inscription.html">Inscription</a></li>
         <li class="nav-tab"><a href="Alumini.html" class="active">Alumni</a></li>
-
       </ul>
     </div>
   </nav>
@@ -830,37 +976,6 @@
   <!-- Contenu principal -->
   <div class="content">
     <h2 class="section-title">FOREIGN LANGUAGE ACADEMY GH</h2>
-
-    
-      <!-- Nouvelle section Statistiques -->
-      <!-- <div class="stats-section">
-        <h2 class="stats-title">NOTRE IMPACT EN CHIFFRES</h2>
-          <div class="stats-container">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
-              <div class="stat-number" id="students-count">1500</div>
-              <div class="stat-label">Étudiants formés</div>
-            </div> -->
-            
-            <!-- <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-globe-africa"></i></div>
-              <div class="stat-number" id="countries-count">15</div>
-              <div class="stat-label">Pays représentés</div>
-            </div> -->
-            
-            <!-- <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-              <div class="stat-number" id="teachers-count">28</div>
-              <div class="stat-label">Enseignants experts</div>
-            </div> -->
-            
-            <!-- <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-plane-departure"></i></div>
-              <div class="stat-number" id="abroad-count">320</div>
-              <div class="stat-label">Étudiants à l'étranger</div>
-            </div>
-          </div>
-        </div> -->
     
     <!-- Grille d'articles -->
     <div class="article-grid">
@@ -899,8 +1014,6 @@
       <h2 class="program-title">PROGRAMME DE FORMATION</h2>
       <p class="program-subtitle">Faites-vous former sur la durée de votre choix; à partir d'un (1) mois jusqu'à douze (12) mois. Cours réguliers ou intensifs.</p>
       
-
-
       <div class="program-features">
         <div class="program-item">
           <div class="program-icon"><i class="fas fa-clock"></i></div>
@@ -931,6 +1044,63 @@
         <h3 class="article-title">Programme Extra-scolaire de Pratique de l'Anglais</h3>
         <p class="article-excerpt">La langue s'acquiert par la pratique. Nous vous exposons à l'anglais dans des situations réelles à travers des activités culturelles, des concerts et des sorties touristiques.</p>
         <a href="extracurricular.html" class="read-more">Découvrir nos activités</a>
+      </div>
+    </div>
+
+      <!-- Nouveau Carrousel Étudiants -->
+    <div class="student-carousel">
+      <div class="student-slides" id="student-slides">
+        <!-- Slide 1 - Étudiants en classe -->
+        <div class="student-slide">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Étudiants en classe">
+          <div class="student-caption">
+            <h3>Apprentissage en immersion</h3>
+            <p>Nos étudiants bénéficient d'un environnement d'apprentissage interactif et stimulant avec des professeurs qualifiés.</p>
+            <a href="programmes.html" class="student-btn">Découvrir nos cours</a>
+          </div>
+        </div>
+        
+        <!-- Slide 2 - Tourisme éducatif -->
+        <div class="student-slide">
+          <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tourisme éducatif">
+          <div class="student-caption">
+            <h3>Excursions culturelles</h3>
+            <p>Nous organisons des sorties éducatives pour pratiquer la langue dans des contextes réels et découvrir la culture.</p>
+            <a href="extracurricular.html" class="student-btn">Voir nos activités</a>
+          </div>
+        </div>
+        
+        <!-- Slide 3 - Colonies de vacances -->
+        <div class="student-slide">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Colonies de vacances">
+          <div class="student-caption">
+            <h3>Camps linguistiques</h3>
+            <p>Nos colonies de vacances combinent apprentissage des langues et activités ludiques pour les plus jeunes.</p>
+            <a href="camps.html" class="student-btn">En savoir plus</a>
+          </div>
+        </div>
+        
+        <!-- Slide 4 - Étudiant en Malaisie -->
+        <div class="student-slide">
+          <img src="https://images.unsplash.com/photo-1686628120105-fcd188c90191?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Étudiant en Malaisie">
+          <div class="student-caption">
+            <h3>Études à l'étranger</h3>
+            <p>Nous accompagnons nos étudiants dans leurs projets d'études internationales, comme ici en Malaisie.</p>
+            <a href="etudes-bourses.html" class="student-btn">Explorer les options</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-nav">
+        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      
+      <div class="carousel-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
       </div>
     </div>
     
@@ -972,6 +1142,8 @@
     </div>
   </div>
   
+  
+  
   <!-- Pied de page -->
   <footer class="app-footer">
     <div class="footer-tabs">
@@ -985,7 +1157,6 @@
           <a href="about.html">Notre académie</a>
           <a href="team.html">Notre équipe</a>
           <a href="alumini.html">Alumini</a>
-
         </div>
       </div>
       
@@ -1033,6 +1204,7 @@
       <p>flaghaccra@gmail.com</p>
     </div>
   </footer>
+  
   <script>
     // Animation des compteurs
     function animateValue(id, start, end, duration) {
@@ -1071,9 +1243,61 @@
 
         observer.observe(statsSection);
       }
+      
+      // Script pour le carrousel
+      const slides = document.querySelector('.student-slides');
+      const slideItems = document.querySelectorAll('.student-slide');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      
+      let currentIndex = 0;
+      const slideCount = slideItems.length;
+      
+      function updateCarousel() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Mettre à jour les dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+      
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+      }
+      
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+      }
+      
+      // Navigation avec les boutons
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+      
+      // Navigation avec les dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+        });
+      });
+      
+      // Défilement automatique
+      let slideInterval = setInterval(nextSlide, 2000);
+      
+      // Arrêter le défilement automatique quand la souris est sur le carrousel
+      const carousel = document.querySelector('.student-carousel');
+      carousel.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+      });
+      
+      carousel.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 2000);
+      });
     });
-
-    // [Le reste du JavaScript reste inchangé]
   </script>
 </body>
 </html>
