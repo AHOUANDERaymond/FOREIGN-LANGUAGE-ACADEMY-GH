@@ -1,427 +1,931 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nos Accomplissements | Foreign Language Academy GH</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- Google Font pour une meilleure typographie -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Accomplissements - Foreign Language Academy GH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* ----- RESET & BASE ----- */
+    /* ===== STYLES IDENTIQUES À PROGRAMMES.HTML ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
+    
     body {
-      background: #f4f6fc;
-      font-family: 'Inter', 'Segoe UI', sans-serif;
-      color: #1e1e2f;
+      background-color: #f5f5f5;
+      color: #333;
       line-height: 1.6;
     }
-
-    /* ----- HERO (cohérent avec l'accueil) ----- */
+    
+    /* Barre de navigation */
+    .navbar {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+    
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .app-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      padding: 0.5rem 0;
+    }
+    
+    .logo {
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-tab {
+      position: relative;
+    }
+    
+    .nav-tab a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 1rem 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 0.9rem;
+    }
+    
+    .nav-tab a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #eb9234;
+    }
+    
+    .nav-tab a.active {
+      color: #eb9234;
+      font-weight: 600;
+    }
+    
+    .nav-tab a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #eb9234;
+    }
+    
+    /* Hero Section */
     .hero {
-      height: 40vh;
-      min-height: 280px;
-      background: linear-gradient(135deg, rgba(13, 9, 130, 0.85), rgba(26, 21, 160, 0.80)),
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" opacity="0.12"><circle cx="150" cy="150" r="90" fill="%23ffffff"/><circle cx="650" cy="450" r="130" fill="%23ffffff"/><circle cx="700" cy="100" r="70" fill="%23ffffff"/><circle cx="100" cy="500" r="110" fill="%23ffffff"/></svg>') center/cover;
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
-      padding: 1.5rem 2rem;
-      border-bottom: 5px solid #eb9234;
-      position: relative;
+      overflow: hidden;
     }
-
-    .hero h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('alliance-francaise.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
     }
-
-    .hero p {
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+    
+    .hero-title {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-subtitle {
       font-size: 1.1rem;
-      max-width: 650px;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(4px);
-      padding: 0.6rem 2rem;
-      border-radius: 40px;
-      font-weight: 400;
-      letter-spacing: 0.3px;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      padding: 0 1rem;
     }
-
-    /* ----- CONTAINER ----- */
+    
+    /* ===== NOUVEAUX STYLES POUR LA PAGE ACCOMPLISHMENTS ===== */
     .container {
-      width: 92%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2.5rem 0 3rem;
+      padding: 4rem 2rem;
     }
-
-    /* ----- TITRE SECTION ----- */
-    .title {
+    
+    .section-title {
       text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      color: #0d0982;
-      margin-bottom: 2.5rem;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #1e3c72;
       position: relative;
     }
-
-    .title::after {
-      content: "";
+    
+    .section-title::after {
+      content: '';
       display: block;
-      width: 80px;
+      width: 100px;
       height: 4px;
-      background: linear-gradient(90deg, #0d0982, #eb9234);
-      margin: 0.6rem auto 0;
-      border-radius: 4px;
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      margin: 0.5rem auto;
+      border-radius: 2px;
     }
-
-    /* ----- GRILLE CARTES ----- */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 18px;
+    
+    /* Carte d'accomplissement - design avec image */
+    .accomplishment-card {
+      background: white;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(13, 9, 130, 0.07);
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(13, 9, 130, 0.05);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+      margin-bottom: 3rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(13, 9, 130, 0.12);
+    
+    .accomplishment-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     }
-
-    /* ----- REMPLACEMENT IMAGE : icône + dégradé élégant ----- */
-    .card-visual {
-      height: 170px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.8rem;
+    
+    /* Conteneur de l'image */
+    .accomplishment-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 350px;
+      flex-shrink: 0;
+    }
+    
+    .accomplishment-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .accomplishment-card:hover .accomplishment-image-wrapper img {
+      transform: scale(1.03);
+    }
+    
+    /* Badge sur l'image */
+    .accomplishment-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(13, 9, 130, 0.85);
       color: white;
-      position: relative;
-      background: linear-gradient(145deg, #0d0982, #322bc0);
-      transition: 0.2s;
-    }
-
-    /* Dégradés distincts pour chaque carte */
-    .card:nth-child(1) .card-visual {
-      background: linear-gradient(145deg, #0d0982, #3b33c9);
-    }
-    .card:nth-child(2) .card-visual {
-      background: linear-gradient(145deg, #14105c, #eb9234);
-    }
-    .card:nth-child(3) .card-visual {
-      background: linear-gradient(145deg, #0b2b5e, #1f8a8a);
-    }
-
-    /* Éléments décoratifs */
-    .card-visual::before {
-      content: "";
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 50%;
-      top: -30px;
-      right: -30px;
-    }
-    .card-visual::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      bottom: -20px;
-      left: -20px;
-    }
-
-    .card-visual i {
-      position: relative;
-      z-index: 2;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-    }
-
-    .card-visual .tag {
-      position: absolute;
-      bottom: 14px;
-      right: 18px;
-      background: rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(4px);
-      padding: 0.25rem 1rem;
+      padding: 0.5rem 1.2rem;
       border-radius: 30px;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.3px;
-      color: #fff;
+      backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       z-index: 2;
     }
-
-    /* ----- CONTENU CARTE ----- */
-    .content {
-      padding: 1.5rem 1.6rem 1.8rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    
+    .accomplishment-badge i {
+      margin-right: 6px;
     }
-
-    .content h3 {
+    
+    /* Contenu de la carte */
+    .accomplishment-content {
+      padding: 2rem;
+      flex: 1;
+    }
+    
+    .accomplishment-content h2 {
       color: #0d0982;
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      line-height: 1.4;
-    }
-
-    .content p {
-      color: #3d3d4f;
-      font-size: 0.95rem;
-      margin-bottom: 1.2rem;
-      flex: 1;
-      line-height: 1.6;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #0d0982;
-      color: #fff;
-      padding: 0.25rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      align-self: flex-start;
-      background: linear-gradient(145deg, #0d0982, #2b26c4);
-      box-shadow: 0 3px 8px rgba(13, 9, 130, 0.15);
-    }
-
-    /* ----- STATS (minimal) ----- */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.8rem;
-      text-align: center;
-      margin: 2.5rem 0 1rem;
-    }
-
-    .number {
-      font-size: 2.6rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #eb9234;
-      line-height: 1.2;
+      margin-bottom: 0.8rem;
     }
-
-    .label {
+    
+    .accomplishment-content .date {
+      display: inline-block;
+      background: #eef0fa;
+      color: #0d0982;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .accomplishment-content .date i {
+      margin-right: 6px;
+    }
+    
+    .accomplishment-content p {
+      color: #555;
       font-size: 1rem;
-      color: #2d2d44;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    
+    /* Tags des accomplissements */
+    .accomplishment-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .tag {
+      background: #f0f2ff;
+      color: #0d0982;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
       font-weight: 500;
     }
-
-    /* ----- CTA ----- */
-    .cta {
-      text-align: center;
-      padding: 2.8rem 1.5rem;
-      background: #eef0fa;
-      border-radius: 32px;
-      margin: 2.5rem 0 0.5rem;
-      border: 1px solid rgba(13, 9, 130, 0.06);
+    
+    .tag i {
+      margin-right: 5px;
+      font-size: 0.75rem;
     }
-
-    .cta h2 {
-      color: #0d0982;
-      font-size: 1.7rem;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
+    
+    .tag.orange {
+      background: #fff3e6;
+      color: #d97f22;
     }
-
-    .btn {
+    
+    .tag.green {
+      background: #e6f7ed;
+      color: #1a8a5a;
+    }
+    
+    /* Bouton de détail (optionnel) */
+    .btn-detail {
       display: inline-block;
-      padding: 0.7rem 2.6rem;
-      background: #eb9234;
-      color: #fff;
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 30px;
       text-decoration: none;
-      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-detail:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(13, 9, 130, 0.3);
+    }
+    
+    /* Disposition en grille pour les cartes */
+    .accomplishments-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    
+    /* ===== STATS ===== */
+    .stats-section {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      color: white;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #eb9234;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-top: 0.3rem;
+    }
+    
+    /* ===== CTA ===== */
+    .cta-section {
+      text-align: center;
+      background: #f0f2ff;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+    }
+    
+    .cta-section h2 {
+      color: #0d0982;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .btn-cta {
+      display: inline-block;
+      background: #eb9234;
+      color: white;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
-      transition: 0.25s ease;
-      box-shadow: 0 6px 18px rgba(235, 146, 52, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(235, 146, 52, 0.3);
     }
-
-    .btn:hover {
+    
+    .btn-cta:hover {
       background: #d97f22;
-      transform: scale(1.02);
-      box-shadow: 0 8px 24px rgba(235, 146, 52, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(235, 146, 52, 0.4);
     }
-
-    .btn i {
+    
+    .btn-cta i {
       margin-right: 8px;
     }
-
-    /* ----- FOOTER (simple) ----- */
+    
+    /* ===== FOOTER ===== */
     footer {
-      background: #0d0982;
-      color: rgba(255, 255, 255, 0.9);
+      background: #222;
+      color: white;
+      padding: 3rem 2rem;
       text-align: center;
-      padding: 1.8rem 1.5rem;
-      margin-top: 2.5rem;
-      border-top: 4px solid #eb9234;
-      font-size: 0.9rem;
-      letter-spacing: 0.3px;
     }
-
-    /* ----- RESPONSIVE ----- */
-    @media (max-width: 700px) {
-      .hero h1 {
-        font-size: 2rem;
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-info {
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .menu-toggle {
+        display: block;
       }
-      .hero p {
-        font-size: 0.95rem;
-        padding: 0.4rem 1.2rem;
+      
+      .nav-tabs {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(13, 9, 130, 0.95);
       }
-      .title {
-        font-size: 1.7rem;
+      
+      .nav-tabs.active {
+        display: flex;
       }
-      .card-visual {
-        height: 140px;
-        font-size: 3rem;
+      
+      .nav-tab {
+        width: 100%;
+        text-align: center;
       }
-      .content h3 {
+      
+      .nav-tab a {
+        padding: 1rem;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
         font-size: 1rem;
       }
-      .cta h2 {
+      
+      .accomplishment-image-wrapper {
+        height: 250px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .accomplishment-content h2 {
         font-size: 1.3rem;
       }
-      .number {
-        font-size: 2rem;
+      
+      .accomplishment-image-wrapper {
+        height: 200px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stat-number {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.5rem;
+      }
+      
+      .logo {
+        height: 40px;
+      }
+      
+      .app-name {
+        font-size: 1.3rem;
+      }
+      
+      .accomplishment-content {
+        padding: 1.2rem;
+      }
+      
+      .accomplishment-content h2 {
+        font-size: 1.1rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      
+      .stat-number {
+        font-size: 1.8rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .hero {
-        height: 32vh;
-        min-height: 200px;
-      }
-      .grid {
-        gap: 1.2rem;
-      }
-      .content {
-        padding: 1.2rem;
-      }
+    /* Popup WhatsApp (copié depuis programmes.html) */
+    .whatsapp-mini-popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: float 3s ease-in-out infinite;
+      display: none;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .whatsapp-bubble {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border-radius: 50px;
+      padding: 15px 25px;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+      backdrop-filter: blur(10px);
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+      50% { box-shadow: 0 10px 40px rgba(37, 211, 102, 0.5); }
+      100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+    }
+    
+    .whatsapp-bubble:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+    }
+    
+    .whatsapp-icon-mini {
+      font-size: 28px;
+      color: white;
+    }
+    
+    .whatsapp-text {
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    .whatsapp-number {
+      font-size: 16px;
+      font-weight: 700;
+      display: block;
+      margin-top: 3px;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .whatsapp-link-inline {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .whatsapp-link-inline:hover {
+      text-decoration: underline;
+    }
+    
+    .close-mini-popup {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff4757;
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(255, 71, 87, 0.3);
+      z-index: 1001;
+    }
+    
+    .close-mini-popup:hover {
+      background: #ff3742;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: white;
+      border: 5px solid #3498db;
+      border-radius: 50%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      border-color: #2980b9;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top i {
+      color: #e74c3c;
+      font-size: 24px;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <h1>Nos Accomplissements</h1>
-    <p>Des réalisations qui reflètent notre engagement pour l'excellence linguistique</p>
-  </section>
+  <!-- ===== BARRE DE NAVIGATION (IDENTIQUE À PROGRAMMES.HTML) ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="app-name">
+        <img src="logo_fla.jpg" alt="Logo FLA" class="logo">
+        <span>Foreign Language Academy GH</span>
+      </h1>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-tabs" id="navTabs">
+        <li class="nav-tab"><a href="index.html">Home</a></li>
+        <li class="nav-tab"><a href="programmes.html">Programmes</a></li>
+        <li class="nav-tab"><a href="extra-scolaire.html">Immersion</a></li>
+        <li class="nav-tab"><a href="vie-au-ghana.html">Vivre au Ghana</a></li>
+        <li class="nav-tab"><a href="alumini.html">Témoignages</a></li>
+        <li class="nav-tab"><a href="contactez-nous.html">Contacts</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <!-- ===== CONTENU ===== -->
-  <div class="container">
+  <!-- ===== HERO SECTION ===== -->
+  
 
-    <h2 class="title">Quelques réalisations marquantes</h2>
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main class="container">
 
-    <div class="grid">
+    <h2 class="section-title">Nos Réalisations</h2>
 
-      <!-- CARTE 1 : Cambridge -->
-      <div class="card">
-        <div class="card-visual">
-          <i class="fas fa-chalkboard-teacher"></i>
-          <span class="tag"><i class="fas fa-graduation-cap" style="margin-right: 4px;"></i>Cambridge</span>
-        </div>
-        <div class="content">
-          <h3>Mise en place du programme Cambridge – Lili Prune (Burkina)</h3>
-          <p>Formation des enseignants d'anglais aux techniques pédagogiques Cambridge Global English pour les niveaux primaire et maternelle.</p>
-          <span class="badge">2025 – 2026</span>
-        </div>
-      </div>
+    <div class="accomplishments-grid">
 
-      <!-- CARTE 2 : Sommet d'Accra -->
-      <div class="card">
-        <div class="card-visual">
-          <i class="fas fa-handshake"></i>
-          <span class="tag"><i class="fas fa-flag" style="margin-right: 4px;"></i>Accra 2025</span>
+      <!-- ===== ACCOMPLISSEMENT 1 : Cambridge ===== -->
+      <article class="accomplishment-card">
+        <div class="accomplishment-image-wrapper">
+          <img src="bk2.jpeg" alt="Programme Cambridge - Lili Prune Burkina">
+          <span class="accomplishment-badge"><i class="fas fa-graduation-cap"></i> Cambridge</span>
         </div>
-        <div class="content">
-          <h3>Interprétation au Sommet Africain des Partis Politiques 2025</h3>
-          <p>Nous avons assuré l'interprétation professionnelle pour faciliter les échanges entre participants de ce sommet international à Accra (Ghana).</p>
-          <span class="badge">Accra 2025</span>
+        <div class="accomplishment-content">
+          <h2>Mise en place du programme Cambridge – Lili Prune (Burkina)</h2>
+          <span class="date"><i class="far fa-calendar-alt"></i> 2025 – 2026</span>
+          <p>Formation des enseignants d'anglais aux techniques pédagogiques Cambridge Global English pour les niveaux primaire et maternelle. Un projet innovant qui a touché plus de 200 élèves.</p>
+          <div class="accomplishment-tags">
+            <span class="tag"><i class="fas fa-chalkboard-teacher"></i> Formation</span>
+            <span class="tag orange"><i class="fas fa-globe-africa"></i> Burkina Faso</span>
+            <span class="tag green"><i class="fas fa-check-circle"></i> Terminé</span>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <!-- CARTE 3 : Ambassade / Diplomatie -->
-      <div class="card">
-        <div class="card-visual">
-          <i class="fas fa-globe-africa"></i>
-          <span class="tag"><i class="fas fa-building" style="margin-right: 4px;"></i>Diplomatie</span>
+      <!-- ===== ACCOMPLISSEMENT 2 : Sommet d'Accra ===== -->
+      <article class="accomplishment-card">
+        <div class="accomplishment-image-wrapper">
+          <img src="summit.jpeg" alt="Sommet Africain des Partis Politiques 2025">
+          <span class="accomplishment-badge"><i class="fas fa-flag"></i> Accra 2025</span>
         </div>
-        <div class="content">
-          <h3>Visite à l'Ambassade des États-Unis</h3>
-          <p>Une immersion diplomatique pour nos étudiants, avec découverte des procédures internationales, échanges culturels et opportunités académiques.</p>
-          <span class="badge">Chaque mois</span>
+        <div class="accomplishment-content">
+          <h2>Interprétation au Sommet Africain des Partis Politiques 2025</h2>
+          <span class="date"><i class="far fa-calendar-alt"></i> 2025</span>
+          <p>Nous avons assuré l'interprétation professionnelle pour faciliter les échanges entre participants de ce sommet international à Accra (Ghana). Une reconnaissance de notre expertise linguistique.</p>
+          <div class="accomplishment-tags">
+            <span class="tag"><i class="fas fa-handshake"></i> Interprétation</span>
+            <span class="tag orange"><i class="fas fa-globe-africa"></i> Ghana</span>
+            <span class="tag green"><i class="fas fa-check-circle"></i> Terminé</span>
+          </div>
         </div>
-      </div>
+      </article>
+
+      <!-- ===== ACCOMPLISSEMENT 3 : Ambassade USA ===== -->
+      <article class="accomplishment-card">
+        <div class="accomplishment-image-wrapper">
+          <img src="ambassade-usa.jpg" alt="Visite à l'Ambassade des États-Unis">
+          <span class="accomplishment-badge"><i class="fas fa-building"></i> Diplomatie</span>
+        </div>
+        <div class="accomplishment-content">
+          <h2>Visite à l'Ambassade des États-Unis</h2>
+          <span class="date"><i class="far fa-calendar-alt"></i> Chaque mois</span>
+          <p>Une immersion diplomatique pour nos étudiants, avec découverte des procédures internationales, échanges culturels et opportunités académiques. Une expérience unique qui ouvre des portes.</p>
+          <div class="accomplishment-tags">
+            <span class="tag"><i class="fas fa-globe-africa"></i> Diplomatie</span>
+            <span class="tag orange"><i class="fas fa-users"></i> Étudiants</span>
+            <span class="tag green"><i class="fas fa-check-circle"></i> En cours</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== ACCOMPLISSEMENT 4 : Ajoute le tien ici ===== -->
+      <article class="accomplishment-card">
+        <div class="accomplishment-image-wrapper">
+          <img src="ton-image.jpg" alt="Titre de l'événement">
+          <span class="accomplishment-badge"><i class="fas fa-star"></i> Catégorie</span>
+        </div>
+        <div class="accomplishment-content">
+          <h2>Titre de l'événement ou réalisation</h2>
+          <span class="date"><i class="far fa-calendar-alt"></i> Date</span>
+          <p>Description de l'accomplissement. Explique ce que vous avez réalisé, l'impact et pourquoi c'est important.</p>
+          <div class="accomplishment-tags">
+            <span class="tag"><i class="fas fa-tag"></i> Tag 1</span>
+            <span class="tag orange"><i class="fas fa-map-marker-alt"></i> Lieu</span>
+            <span class="tag green"><i class="fas fa-check-circle"></i> Statut</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== ACCOMPLISSEMENT 5 : Ajoute le tien ici ===== -->
+      <article class="accomplishment-card">
+        <div class="accomplishment-image-wrapper">
+          <img src="ton-image2.jpg" alt="Titre de l'événement">
+          <span class="accomplishment-badge"><i class="fas fa-trophy"></i> Catégorie</span>
+        </div>
+        <div class="accomplishment-content">
+          <h2>Titre de l'événement ou réalisation</h2>
+          <span class="date"><i class="far fa-calendar-alt"></i> Date</span>
+          <p>Description de l'accomplissement. Explique ce que vous avez réalisé, l'impact et pourquoi c'est important.</p>
+          <div class="accomplishment-tags">
+            <span class="tag"><i class="fas fa-tag"></i> Tag 1</span>
+            <span class="tag orange"><i class="fas fa-map-marker-alt"></i> Lieu</span>
+            <span class="tag green"><i class="fas fa-check-circle"></i> Statut</span>
+          </div>
+        </div>
+      </article>
 
     </div>
 
     <!-- ===== STATS ===== -->
-    <div class="stats-grid">
-      <div>
-        <div class="number">30+</div>
-        <div class="label">Projets réalisés</div>
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Projets réalisés</div>
+        </div>
+        <div>
+          <div class="stat-number">150+</div>
+          <div class="stat-label">Étudiants formés</div>
+        </div>
+        <div>
+          <div class="stat-number">13</div>
+          <div class="stat-label">Pays partenaires</div>
+        </div>
+        <div>
+          <div class="stat-number">4</div>
+          <div class="stat-label">Événements majeurs</div>
+        </div>
       </div>
-      <div>
-        <div class="number">150+</div>
-        <div class="label">Étudiants formés</div>
-      </div>
-      <div>
-        <div class="number">13</div>
-        <div class="label">Pays partenaires</div>
-      </div>
-    </div>
+    </section>
 
     <!-- ===== CTA ===== -->
-    <div class="cta">
+    <section class="cta-section">
       <h2>Vous serez peut-être notre prochaine réussite !</h2>
-      <a href="fiche_de_preinscription.html" class="btn">
+      <p>Rejoignez notre académie et faites partie de nos futures accomplissements.</p>
+      <a href="fiche_de_preinscription.html" class="btn-cta">
         <i class="fas fa-pen-fancy"></i> Je m'inscris maintenant
       </a>
-    </div>
+    </section>
 
-  </div>
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    © 2025 Foreign Language Academy GH<br />
-    Ashongman Estates • Accra • Ghana
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="contactez-nous.html">Contact</a>
+    </div>
+    <div class="footer-info">
+      &copy; 2026 Foreign Language Academy GH<br>
+      Ashongman Estates • Accra • Ghana
+    </div>
   </footer>
+
+  <!-- ===== POPUP WHATSAPP ===== -->
+  <div class="whatsapp-mini-popup" id="whatsappMiniPopup">
+    <div class="whatsapp-bubble" id="whatsappBubble">
+      <i class="fab fa-whatsapp whatsapp-icon-mini"></i>
+      <div class="whatsapp-text">
+        📱 Un groupe WhatsApp de cours d'anglais gratuit et sans engagement ?<br>
+        <span class="whatsapp-number">
+          <a href="https://chat.whatsapp.com/G40JEhaukk62vxJGZp1FEe" target="_blank" class="whatsapp-link-inline">
+            REJOINDRE
+          </a>
+          <a href="https://wa.me/233536725050" target="_blank" class="whatsapp-link-inline">
+            +233 536725050
+          </a>
+        </span>
+      </div>
+    </div>
+    <div class="close-mini-popup" id="closeMiniPopup">
+      <i class="fas fa-times"></i>
+    </div>
+  </div>
+
+  <!-- ===== BOUTON BACK TO TOP ===== -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Menu responsive
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      const navTabs = document.getElementById('navTabs');
+      navTabs.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (navTabs.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Popup WhatsApp
+    document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('whatsappMiniPopup');
+      const closeBtn = document.getElementById('closeMiniPopup');
+      const bubble = document.getElementById('whatsappBubble');
+      
+      const hasClosedPopup = localStorage.getItem('whatsappPopupClosed');
+      
+      if (!hasClosedPopup) {
+        setTimeout(function() {
+          popup.style.display = 'block';
+        }, 2000);
+      } else {
+        popup.style.display = 'none';
+      }
+      
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        popup.style.display = 'none';
+        localStorage.setItem('whatsappPopupClosed', 'true');
+      });
+
+      bubble.addEventListener('click', function() {
+        window.open('https://wa.me/233536725050', '_blank');
+        popup.style.display = 'none';
+        localStorage.setItem('whatsappPopupClosed', 'true');
+      });
+
+      setTimeout(function() {
+        localStorage.removeItem('whatsappPopupClosed');
+      }, 1 * 60 * 1000);
+    });
+
+    // Back to Top
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'flex';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 
 </body>
 </html>
