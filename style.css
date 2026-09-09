@@ -1,0 +1,197 @@
+/* ===== FOOTER ===== */
+.app-footer {
+    background: linear-gradient(135deg, #0d0982 0%, #080561 100%);
+    color: white;
+    padding: 3rem 2rem;
+    position: relative;
+    margin-top: 0;
+}
+
+.app-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #eb9234, #0d0982);
+}
+
+.footer-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-tab {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.tab-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #eb9234;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.tab-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #eb9234;
+}
+
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tab-content a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.tab-content a::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #eb9234;
+}
+
+.tab-content a:hover {
+    color: white;
+    padding-left: 1.5rem;
+}
+
+/* SECTION RÉSEAUX SOCIAUX DANS LE FOOTER */
+.footer-social {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.footer-social h3 {
+    color: #eb9234;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.footer-social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    min-width: 80px;
+}
+
+.footer-social-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(235,146,52,0.3);
+}
+
+.footer-social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.footer-social-item:hover .footer-social-icon {
+    transform: scale(1.1);
+}
+
+.footer-social-item span {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.footer-social-item small {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.65rem;
+}
+
+/* Couleurs des icônes sociales dans le footer */
+.footer-social-item:nth-child(1) .footer-social-icon { background: linear-gradient(135deg, #1877f2, #0d65d9); }
+.footer-social-item:nth-child(2) .footer-social-icon { background: linear-gradient(135deg, #e4405f, #c13584); }
+.footer-social-item:nth-child(3) .footer-social-icon { background: linear-gradient(135deg, #000000, #161616); }
+.footer-social-item:nth-child(4) .footer-social-icon { background: linear-gradient(135deg, #000000, #1a1a1a); }
+.footer-social-item:nth-child(5) .footer-social-icon { background: linear-gradient(135deg, #25d366, #128C7E); }
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0.3rem 0;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+    .footer-tabs {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-social-grid {
+        gap: 0.8rem;
+    }
+    
+    .footer-social-item {
+        min-width: 65px;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .footer-social-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-tabs {
+        grid-template-columns: 1fr;
+    }
+}
