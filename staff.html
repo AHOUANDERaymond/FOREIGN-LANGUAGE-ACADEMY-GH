@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rencontrez notre équipe d'enseignants qualifiés à la Foreign Language Academy GH">
+  <title>Notre Équipe - Foreign Language Academy GH</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* ================================================================
+       STYLES DE LA PAGE STAFF
+       ================================================================ */
+    
+    body {
+      /* background-color: #f5f5f5; */
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* ===== BARRE DE NAVIGATION (identique au reste du site) ===== */
+    .navbar {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      color: white;
+      padding: 0.01rem;
+      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+    
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .app-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      padding: 0.5rem 0;
+    }
+    
+    .logo {
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-tab {
+      position: relative;
+    }
+    
+    .nav-tab a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 1rem 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 0.9rem;
+    }
+    
+    .nav-tab a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #eb9234;
+    }
+    
+    .nav-tab a.active {
+      color: #eb9234;
+      font-weight: 600;
+    }
+    
+    .nav-tab a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #eb9234;
+    }
+    
+   
+    
+    /* ===== SECTION ÉQUIPE ===== */
+    .team-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #0d0982;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #eb9234, #0d0982);
+      margin: 0.8rem auto;
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    
+    /* ===== GRILLE DES MEMBRES ===== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* ===== CARTE MEMBRE ===== */
+    .team-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+      position: relative;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(13, 9, 130, 0.15);
+    }
+    
+    /* Photo du membre */
+    .team-photo-wrapper {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eef0fa, #d8ddf0);
+    }
+    
+    .team-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.5s ease;
+    }
+    
+    .team-card:hover .team-photo {
+      transform: scale(1.08);
+    }
+    
+    /* Overlay au survol avec réseaux sociaux */
+    .team-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(13, 9, 130, 0.85), transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      gap: 0.6rem;
+    }
+    
+    .team-card:hover .team-overlay {
+      opacity: 1;
+    }
+    
+    .team-overlay a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #0d0982;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .team-overlay a:hover {
+      background: #eb9234;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Contenu de la carte */
+    .team-content {
+      padding: 1.5rem 1.2rem;
+    }
+    
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0d0982;
+      margin-bottom: 0.3rem;
+      transition: color 0.3s ease;
+    }
+    
+    .team-card:hover .team-name {
+      color: #eb9234;
+    }
+    
+    .team-role {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #eb9234;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+    
+    .team-role::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 2px;
+      background: #eb9234;
+      border-radius: 2px;
+    }
+    
+    .team-bio {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+    
+    /* Badge spécial (ex: Directeur) */
+    .team-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #eb9234, #d97f22);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(235, 146, 52, 0.4);
+      z-index: 2;
+    }
+    
+    .team-badge i {
+      margin-right: 4px;
+    }
+    
+    /* ===== SECTION STATS ÉQUIPE ===== */
+    .team-stats {
+      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin: 4rem auto 0;
+      max-width: 1200px;
+      color: white;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .stat-item {
+      position: relative;
+    }
+    
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #eb9234;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+    }
+    
+    /* ===== SECTION CTA ===== */
+    .team-cta {
+      text-align: center;
+      background: white;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin: 4rem auto 0;
+      max-width: 1200px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+    }
+    
+    .team-cta h2 {
+      color: #0d0982;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    
+    .team-cta p {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+    }
+    
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #eb9234, #d97f22);
+      color: white;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(235, 146, 52, 0.3);
+      margin: 0.4rem;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(235, 146, 52, 0.4);
+    }
+    
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #0d0982;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 2px solid #0d0982;
+      margin: 0.4rem;
+    }
+    
+    .btn-secondary:hover {
+      background: #0d0982;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .btn-primary i,
+    .btn-secondary i {
+      margin-right: 8px;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-tabs {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(13, 9, 130, 0.98);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 200;
+      }
+      
+      .nav-tabs.active {
+        display: flex;
+      }
+      
+      .nav-tab {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-tab a {
+        padding: 1rem;
+      }
+      
+      .team-hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .team-hero {
+        height: 35vh;
+        min-height: 280px;
+      }
+      
+      .team-hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .team-hero p {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+      }
+      
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .team-photo-wrapper {
+        height: 250px;
+      }
+      
+      .stat-number {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo {
+        height: 40px;
+      }
+      
+      .app-name {
+        font-size: 1.1rem;
+      }
+      
+      .app-name span {
+        font-size: 0.9rem;
+      }
+      
+      .team-hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .team-section {
+        padding: 3rem 1rem;
+      }
+      
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .team-photo-wrapper {
+        height: 320px;
+      }
+      
+      .team-cta {
+        padding: 2rem 1.5rem;
+      }
+      
+      .team-cta h2 {
+        font-size: 1.5rem;
+      }
+      
+      .btn-primary,
+      .btn-secondary {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== BARRE DE NAVIGATION ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="app-name">
+        <img src="logo_fla.jpg" alt="Logo FLA" class="logo">
+        <span>Foreign Language Academy GH</span>
+      </h1>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-tabs" id="navTabs">
+        <li class="nav-tab"><a href="index.html">Home</a></li>
+        <li class="nav-tab"><a href="programmes.html">Programmes</a></li>
+        <li class="nav-tab"><a href="extra-scolaire.html">Immersion</a></li>
+        <li class="nav-tab"><a href="vie-au-ghana.html">Vivre au Ghana</a></li>
+        <li class="nav-tab"><a href="alumini.html">Témoignages</a></li>
+        <li class="nav-tab"><a href="contactez-nous.html">Contacts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  
+
+  <!-- ===== SECTION ÉQUIPE ===== -->
+  <main class="team-section">
+    <h2 class="section-title">Les Visages de FLA</h2>
+    <p class="section-subtitle">
+      Rencontrez les professionnels qui font de la Foreign Language Academy un lieu d'excellence et de partage
+    </p>
+
+    <div class="team-grid">
+
+      <!-- Membre 1 - Directrice -->
+      <article class="team-card">
+        <span class="team-badge"><i class="fas fa-crown"></i> Directrice</span>
+        <div class="team-photo-wrapper">
+          <img src="staff5.jpeg" alt="Photo du Directeur" class="team-photo">
+          <div class="team-overlay">
+            <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/233536725050" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <!-- <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Jasmine Zahabi</h3>
+          <span class="team-role">Directrice  Générale</span>
+          <p class="team-bio">
+            Experte en linguistique et communication appliquée.
+          </p>
+        </div>
+      </article>
+
+      <!-- Membre 2 - Co-fondateur -->
+      <article class="team-card">
+        <span class="team-badge"><i class="fas fa-star"></i> <Co-fondateurs>Co-fondateur</Co-fondateurs></span>
+        <div class="team-photo-wrapper">
+          <img src="staff8.jpeg" alt="Photo de la Coordinatrice" class="team-photo">
+          <div class="team-overlay">
+            <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/233536725050" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Christian Houessou</h3>
+          <span class="team-role">Directeur Pédagogique </span>
+          <p class="team-bio">
+            Spécialiste de la méthode Headway Oxford, assure la qualité pédagogique.
+          </p>
+        </div>
+      </article>
+
+
+      <!-- Membre 2.1 - Co-fondateur -->
+      <article class="team-card">
+        <span class="team-badge"><i class="fas fa-star"></i> <Co-fondateurs>Co-fondateur</Co-fondateurs></span>
+        <div class="team-photo-wrapper">
+          <img src="staff4.jpeg" alt="Photo du Coordinateur" class="team-photo">
+          <div class="team-overlay">
+            <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/2290164284866" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Raymond Ahouande</h3>
+          <span class="team-role">Coordinateur du développement</span>
+          <p class="team-bio">
+            Assure le développement logistique et la présence en ligne.
+          </p>
+        </div>
+      </article>
+
+      <!-- Membre 3 - Professeur d'anglais -->
+      <article class="team-card">
+        <div class="team-photo-wrapper">
+          <img src="staff1.jpeg" alt="Photo Professeur d'Anglais" class="team-photo">
+          <div class="team-overlay">
+            <!-- <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a> -->
+            <!-- <a href="https://wa.me/233536725050" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a> -->
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Raphael k. Ayivi</h3>
+          <span class="team-role">Professeur d'Anglais</span>
+          <p class="team-bio">
+            Enseignant natif; Méthode immersive et interactive.
+          </p>
+        </div>
+      </article>
+
+      <!-- Membre 4 - Professeur d'anglais -->
+      <article class="team-card">
+        <div class="team-photo-wrapper">
+          <img src="staff3.jpeg" alt="Photo Professeure de Français" class="team-photo">
+          <div class="team-overlay">
+            <!-- <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a> -->
+            <!-- <a href="https://wa.me/233536725050" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a> -->
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Philip Marfo</h3>
+          <span class="team-role">Professeur d'anglais</span>
+          <p class="team-bio">
+            Natif, passionné par la transmission de l'anglais aux francophones. 
+          </p>
+        </div>
+      </article>
+
+      <!-- Membre 5 - Professeur d'anglais-->
+      <article class="team-card">
+        <div class="team-photo-wrapper">
+          <img src="staff9.jpeg" alt="Photo Conseiller Études" class="team-photo">
+          <div class="team-overlay">
+            <!-- <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a> -->
+            <!-- <a href="https://wa.me/233536725050" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a> -->
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Bernice Asare</h3>
+          <span class="team-role">Professeure d'anglais</span>
+          <p class="team-bio">
+            Experte en didactique
+          </p>
+        </div>
+      </article>
+
+      <!-- Membre 6 - Responsable culturel
+      <article class="team-card">
+        <div class="team-photo-wrapper">
+          <img src="staff/responsable-culturel.jpg" alt="Photo Responsable Culturel" class="team-photo">
+          <div class="team-overlay">
+            <a href="mailto:flaghaccra@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/233536725050" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">Mlle Akosua Boateng</h3>
+          <span class="team-role">Responsable Immersion & Culture</span>
+          <p class="team-bio">
+            Organisatrice des sorties culturelles, visites d'ambassade et colonies de vacances linguistiques du Ghana.
+          </p>
+        </div>
+      </article> -->
+
+    </div>
+
+    <!-- ===== STATS ÉQUIPE ===== -->
+    <div class="team-stats">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Enseignants qualifiés</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4+</div>
+          <div class="stat-label">Années d'expérience</div>
+        </div>
+        <!-- <div class="stat-item">
+          <div class="stat-number">2000+</div>
+          <div class="stat-label">Étudiants formés</div>
+        </div> -->
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Taux de satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CTA ===== -->
+    <div class="team-cta">
+      <h2>Rejoignez Notre Communauté</h2>
+      <p>
+        Vous souhaitez apprendre une langue avec des professeurs passionnés ? 
+        Nos équipes sont prêtes à vous accompagner dans votre parcours linguistique.
+      </p>
+      <a href="fiche_de_preinscription.html" class="btn-primary">
+        <i class="fas fa-pen-to-square"></i> S'inscrire maintenant
+      </a>
+      <a href="contactez-nous.html" class="btn-secondary">
+        <i class="fas fa-envelope"></i> Nous contacter
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ===== BOUTON BACK TO TOP ===== -->
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- ===== FOOTER (chargé automatiquement) ===== -->
+  <script src="footer.js"></script>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Menu responsive
+    const menuToggle = document.getElementById('menuToggle');
+    const navTabs = document.getElementById('navTabs');
+    
+    if (menuToggle && navTabs) {
+      menuToggle.addEventListener('click', function() {
+        navTabs.classList.toggle('active');
+        const icon = this.querySelector('i');
+        if (navTabs.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+
+      // Fermer le menu au clic sur un lien
+      document.querySelectorAll('.nav-tab a').forEach(link => {
+        link.addEventListener('click', () => {
+          navTabs.classList.remove('active');
+          const icon = menuToggle.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      });
+    }
+
+    // Back to Top
+    const backToTop = document.getElementById('backToTop');
+    
+    if (backToTop) {
+      window.addEventListener('scroll', () => {
+        backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+      });
+      
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+
+</body>
+</html>
