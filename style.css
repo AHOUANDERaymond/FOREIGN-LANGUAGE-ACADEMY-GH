@@ -362,3 +362,149 @@
     font-size: 0.85rem;
   }
 }
+
+/* ============================================================
+   STYLES DE LA NAVBAR PARTAGÉE
+   ============================================================ */
+.navbar {
+  background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+  position: relative;
+  z-index: 100;
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #eb9234, #0d0982);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-tabs {
+  display: flex;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.nav-tab {
+  position: relative;
+}
+
+.nav-tab a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.nav-tab a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #eb9234;
+}
+
+.nav-tab a.active {
+  color: #eb9234;
+  font-weight: 600;
+}
+
+.nav-tab a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #eb9234;
+}
+
+.app-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+}
+
+/* Responsive navbar */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-tabs {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(13, 9, 130, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 200;
+  }
+  
+  .nav-tabs.active {
+    display: flex;
+  }
+  
+  .nav-tab {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-tab a {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 40px;
+  }
+  .app-name {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-tab a {
+    padding: 0.8rem 0;
+  }
+}
