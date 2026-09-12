@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLA Ghana Blog - Articles sur la vie à Accra</title>
+  <title>Vivre au Ghana - FLA Ghana</title>
+  <meta name="description" content="Découvrez nos articles et conseils sur la vie à Accra, les voyages et l'immersion linguistique au Ghana.">
+
+  <link rel="icon" type="image/png" href="logo_fla.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
   <style>
-    /* ===== VARIABLES CSS ===== */
+    /* ============================================================
+       VARIABLES
+       ============================================================ */
     :root {
       --primary: #0d0982;
       --primary-light: #1a15a0;
@@ -25,50 +31,156 @@
       --radius: 12px;
       --nav-bg: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
     }
-    
-    /* ===== RESET ET BASE ===== */
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     html {
       scroll-behavior: smooth;
     }
-    
+
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--light-bg);
       color: var(--text-dark);
       line-height: 1.6;
       overflow-x: hidden;
-      padding-top: 0; /* Pour la navbar fixe */
     }
-    
+
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       line-height: 1.3;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
       width: 100%;
     }
-    
+
     section {
       padding: 80px 0;
     }
-    
+
     img {
       max-width: 100%;
       height: auto;
     }
-    
-    /* ===== BOUTONS ===== */
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    .navbar {
+      background: var(--nav-bg);
+      color: var(--white);
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+
+    .navbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .app-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      padding: 0.5rem 0;
+      color: var(--white);
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+    }
+
+    /* Bouton hamburger - caché sur desktop */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1000;
+    }
+
+    /* Liste des liens */
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-tab {
+      position: relative;
+    }
+
+    .nav-tab a {
+      display: block;
+      color: var(--white);
+      text-decoration: none;
+      padding: 1rem 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 0.9rem;
+    }
+
+    .nav-tab a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+    }
+
+    .nav-tab a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-tab a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent);
+    }
+
+    /* ============================================================
+       BOUTONS
+       ============================================================ */
     .btn {
       display: inline-block;
       padding: 12px 28px;
@@ -82,32 +194,30 @@
       border: none;
       font-size: 0.9rem;
     }
-    
+
     .btn-primary {
       background: var(--primary-gradient);
       color: var(--white);
     }
-    
+
     .btn-primary:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
     }
-    
+
     .btn-accent {
       background: var(--accent-gradient);
       color: var(--white);
     }
-    
+
     .btn-accent:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(235, 146, 52, 0.3);
     }
-    
-   
-    
-   
-    
-    /* ===== HERO HEADER ===== */
+
+    /* ============================================================
+       HERO HEADER
+       ============================================================ */
     .hero-header {
       background: var(--primary-gradient);
       color: var(--white);
@@ -116,7 +226,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .hero-header::before {
       content: '';
       position: absolute;
@@ -127,45 +237,47 @@
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 L1000,0 L1000,100 Q500,80 0,100 Z" fill="%23ffffff" opacity="0.05"/></svg>');
       background-size: cover;
     }
-    
+
     .hero-header .container {
       position: relative;
       z-index: 1;
     }
-    
+
     .hero-header h1 {
       font-size: 3rem;
       margin-bottom: 20px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-    
+
     .hero-header p {
       font-size: 1.2rem;
       opacity: 0.9;
       max-width: 700px;
       margin: 0 auto 30px;
     }
-    
-    /* ===== SECTION TITLE ===== */
+
+    /* ============================================================
+       SECTION TITLE
+       ============================================================ */
     .section-title {
       text-align: center;
       margin-bottom: 60px;
       position: relative;
     }
-    
+
     .section-title h2 {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 15px;
     }
-    
+
     .section-title p {
       font-size: 1.1rem;
       color: var(--text-light);
       max-width: 700px;
       margin: 0 auto;
     }
-    
+
     .section-title::after {
       content: '';
       display: block;
@@ -175,19 +287,21 @@
       margin: 20px auto;
       border-radius: 2px;
     }
-    
-    /* ===== BLOG POSTS ===== */
+
+    /* ============================================================
+       BLOG POSTS
+       ============================================================ */
     .blog-section {
       padding: 60px 0;
     }
-    
+
     .blog-posts {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 30px;
       margin-bottom: 50px;
     }
-    
+
     .post-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -201,17 +315,17 @@
       flex-direction: column;
       height: 100%;
     }
-    
+
     .post-card.visible {
       transform: translateY(0);
       opacity: 1;
     }
-    
+
     .post-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-hover);
     }
-    
+
     .post-image {
       width: 100%;
       height: 220px;
@@ -219,18 +333,18 @@
       position: relative;
       flex-shrink: 0;
     }
-    
+
     .post-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
-    
+
     .post-card:hover .post-image img {
       transform: scale(1.05);
     }
-    
+
     .post-image::after {
       content: '';
       position: absolute;
@@ -241,7 +355,7 @@
       background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
       pointer-events: none;
     }
-    
+
     .post-category {
       position: absolute;
       top: 15px;
@@ -255,14 +369,14 @@
       z-index: 2;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
-    
+
     .post-content {
       padding: 25px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
-    
+
     .post-title {
       font-size: 1.3rem;
       color: var(--primary);
@@ -270,11 +384,11 @@
       line-height: 1.4;
       transition: color 0.3s ease;
     }
-    
+
     .post-card:hover .post-title {
       color: var(--accent);
     }
-    
+
     .post-excerpt {
       color: var(--text-light);
       font-size: 0.95rem;
@@ -282,7 +396,7 @@
       line-height: 1.6;
       flex-grow: 1;
     }
-    
+
     .post-meta {
       display: flex;
       justify-content: space-between;
@@ -292,7 +406,7 @@
       flex-wrap: wrap;
       gap: 15px;
     }
-    
+
     .post-date {
       color: var(--text-light);
       font-size: 0.85rem;
@@ -300,8 +414,10 @@
       align-items: center;
       gap: 5px;
     }
-    
-    /* ===== BLOG INFO ===== */
+
+    /* ============================================================
+       BLOG INFO
+       ============================================================ */
     .blog-info {
       background: var(--white);
       padding: 40px;
@@ -312,7 +428,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .blog-info::before {
       content: "";
       position: absolute;
@@ -322,19 +438,19 @@
       height: 4px;
       background: var(--primary-gradient);
     }
-    
+
     .blog-info i {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 15px;
     }
-    
+
     .blog-info p {
       color: var(--text-dark);
       font-size: 1rem;
       margin-bottom: 10px;
     }
-    
+
     .blog-info .blogger-badge {
       display: inline-block;
       background: var(--primary-gradient);
@@ -345,8 +461,10 @@
       font-weight: 600;
       margin-top: 10px;
     }
-    
-    /* ===== BOUTONS FLOTTANTS ===== */
+
+    /* ============================================================
+       BOUTON FLOTTANT BACK TO TOP
+       ============================================================ */
     .floating-btns {
       position: fixed;
       bottom: 30px;
@@ -356,7 +474,7 @@
       flex-direction: column;
       gap: 15px;
     }
-    
+
     .floating-btn {
       width: 60px;
       height: 60px;
@@ -375,495 +493,154 @@
       position: relative;
       overflow: hidden;
     }
-    
-    .floating-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--accent-gradient);
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: -1;
-    }
-    
+
     .floating-btn:hover {
       transform: translateY(-3px) scale(1.05);
       box-shadow: 0 8px 20px rgba(13, 9, 130, 0.5);
+      background: var(--accent-gradient);
     }
-    
-    .floating-btn:hover::before {
-      opacity: 1;
-    }
-    
-    /* ===== BARRE DE PROGRESSION ===== */
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: transparent;
-      z-index: 1001;
-    }
-    
-    .progress-bar {
-      height: 4px;
-      background: var(--primary-gradient);
-      width: 0%;
-      transition: width 0.2s ease;
-    }
-    
-    /* ===== RESPONSIVE ===== */
-    
-    /* Tablettes et petits ordinateurs */
+
+    /* ============================================================
+       RESPONSIVE - MENU HAMBURGER (identique à contactez-nous.html)
+       ============================================================ */
+
+    /* Tablettes */
     @media (max-width: 1100px) {
-      .nav-tabs {
-        gap: 0;
-      }
-      
       .nav-tab a {
         padding: 20px 12px;
         font-size: 0.85rem;
       }
     }
-    
+
     @media (max-width: 992px) {
-      .hero-header {
-        padding: 80px 0;
-      }
-      
-      .hero-header h1 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title h2 {
-        font-size: 2.2rem;
-      }
-      
-      .blog-posts {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      }
-      
-      .app-name span {
-        font-size: 1.3rem;
-      }
-      
-      .logo {
-        height: 45px;
-      }
-      
-      section {
-        padding: 60px 0;
-      }
-    }
-    
-    /* Tablettes et grands mobiles */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 0;
-      }
-      
-      .menu-toggle {
-        display: flex;
-      }
-      
-      .nav-tabs {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: var(--nav-bg);
-        flex-direction: column;
-        padding: 100px 30px 30px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-        transition: right 0.3s ease;
-        z-index: 999;
-        gap: 0;
-        overflow-y: auto;
-      }
-      
-      .nav-tabs.active {
-        right: 0;
-      }
-      
-      .nav-tab {
-        margin: 10px 0;
-        width: 100%;
-      }
-      
-      .nav-tab a {
-        padding: 15px;
-        font-size: 1rem;
-        border-radius: 5px;
-        text-align: left;
-      }
-      
-      .nav-tab a.active::after {
-        display: none;
-      }
-      
-      .nav-tab a.active {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-      
-      .hero-header {
-        padding: 70px 0;
-      }
-      
-      .hero-header h1 {
-        font-size: 2.2rem;
-        margin-bottom: 15px;
-      }
-      
-      .hero-header p {
-        font-size: 1.1rem;
-        margin-bottom: 25px;
-      }
-      
-      .blog-posts {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-      
-      .floating-btn {
-        width: 55px;
-        height: 55px;
-        font-size: 1.1rem;
-      }
-      
-      .floating-btns {
-        bottom: 20px;
-        right: 20px;
-        gap: 12px;
-      }
-      
-      .post-content {
-        padding: 20px;
-      }
-      
-      .blog-info {
-        padding: 30px;
-        margin-top: 40px;
-      }
-      
-      .section-title {
-        margin-bottom: 40px;
-      }
-    }
-    
-    /* Mobiles */
-    @media (max-width: 576px) {
-      .hero-header {
-        padding: 60px 0;
-      }
-      
-      .hero-header h1 {
-        font-size: 2rem;
-      }
-      
-      .hero-header p {
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-      
-      .app-name span {
-        font-size: 1.1rem;
-      }
-      
-      .logo {
-        height: 40px;
-      }
-      
-      .container {
-        padding: 0 15px;
-      }
-      
-      .post-image {
-        height: 200px;
-      }
-      
-      .post-title {
-        font-size: 1.2rem;
-      }
-      
-      .post-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-      
-      .post-meta .btn {
-        width: 100%;
-        text-align: center;
-      }
-      
-      .blog-info {
-        padding: 25px 20px;
-      }
-      
-      .blog-info i {
-        font-size: 2rem;
-      }
-      
-      .floating-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-      
-      .section-title p {
-        font-size: 1rem;
-      }
-      
-      .section-title::after {
-        width: 60px;
-        margin: 15px auto;
-      }
-      
-      section {
-        padding: 50px 0;
-      }
-    }
-    
-    /* Très petits mobiles */
-    @media (max-width: 375px) {
-      .hero-header h1 {
-        font-size: 1.8rem;
-      }
-      
-      .app-name {
-        gap: 10px;
-      }
-      
-      .app-name span {
-        font-size: 1rem;
-      }
-      
-      .logo {
-        height: 35px;
-      }
-      
-      .menu-toggle {
-        width: 40px;
-        height: 40px;
-        font-size: 1.3rem;
-      }
-      
-      .nav-tabs {
-        width: 250px;
-        padding: 90px 20px 20px;
-      }
-      
-      .post-image {
-        height: 180px;
-      }
-      
-      .post-excerpt {
-        font-size: 0.9rem;
-      }
-      
-      .btn {
-        padding: 10px 22px;
-        font-size: 0.85rem;
-      }
-    }
-
-
-
-  /* Styles de base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      background-color: white;
-      color: black;
-      line-height: 1.6;
-    }
-    
-    /* Barre de navigation améliorée */
-    .navbar {
-      background: linear-gradient(135deg, #0d0982 0%, #1a15a0 100%);
-      color: white;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
-      position: relative;
-      z-index: 100;
-    }
-    
-    .navbar::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, #eb9234, #0d0982);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .nav-tabs {
-      display: flex;
-      list-style: none;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-tab {
-      position: relative;
-    }
-    
-    .nav-tab a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 1rem 0.8rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      font-size: 0.9rem;
-    }
-    
-    .nav-tab a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #eb9234;
-    }
-    
-    .nav-tab a.active {
-      color: #eb9234;
-      font-weight: 600;
-    }
-    
-    .nav-tab a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: #eb9234;
-    }
-    
-    /* Styles pour le logo et le nom */
-    .app-name {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      padding: 0.5rem 0;
-    }
-    
-    .logo {
-      height: 50px;
-      width: auto;
-      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .logo {
-        height: 40px;
-      }
-      .app-name {
-        font-size: 1.3rem;
-      }
+      /* Activation du hamburger */
       .menu-toggle {
         display: block;
       }
-      
+
       .nav-tabs {
         display: none;
         width: 100%;
         flex-direction: column;
         background: rgba(13, 9, 130, 0.95);
+        margin-top: 1rem;
+        list-style: none;
+        transition: all 0.3s ease;
       }
-      
+
       .nav-tabs.active {
         display: flex;
       }
-      
+
       .nav-tab {
         width: 100%;
         text-align: center;
       }
-      
+
       .nav-tab a {
         padding: 1rem;
       }
-    }
-    
-    @media (max-width: 480px) {
-      .nav-tab a {
-        padding: 0.8rem 0;
+
+      .nav-tab a.active::after {
+        display: none;
       }
+
+      .hero-header { padding: 80px 0; }
+      .hero-header h1 { font-size: 2.5rem; }
+      .section-title h2 { font-size: 2.2rem; }
+      .blog-posts { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+      .app-name span { font-size: 1.3rem; }
+      .logo { height: 45px; }
+      section { padding: 60px 0; }
+    }
+
+    /* Tablettes et mobiles */
+    @media (max-width: 768px) {
+      .hero-header { padding: 70px 0; }
+      .hero-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+      .hero-header p { font-size: 1.1rem; margin-bottom: 25px; }
+
+      .blog-posts { grid-template-columns: 1fr; gap: 25px; }
+
+      .floating-btn { width: 55px; height: 55px; font-size: 1.1rem; }
+      .floating-btns { bottom: 20px; right: 20px; gap: 12px; }
+
+      .post-content { padding: 20px; }
+      .blog-info { padding: 30px; margin-top: 40px; }
+      .section-title { margin-bottom: 40px; }
+    }
+
+    /* Mobiles */
+    @media (max-width: 576px) {
+      .hero-header { padding: 60px 0; }
+      .hero-header h1 { font-size: 2rem; }
+      .hero-header p { font-size: 1rem; line-height: 1.5; }
+      .app-name span { font-size: 1.1rem; }
+      .logo { height: 40px; }
+      .container { padding: 0 15px; }
+      .post-image { height: 200px; }
+      .post-title { font-size: 1.2rem; }
+      .post-meta { flex-direction: column; align-items: flex-start; gap: 15px; }
+      .post-meta .btn { width: 100%; text-align: center; }
+      .blog-info { padding: 25px 20px; }
+      .blog-info i { font-size: 2rem; }
+      .floating-btn { width: 50px; height: 50px; font-size: 1rem; }
+      .section-title h2 { font-size: 1.8rem; }
+      .section-title p { font-size: 1rem; }
+      .section-title::after { width: 60px; margin: 15px auto; }
+      section { padding: 50px 0; }
+    }
+
+    /* Très petits mobiles */
+    @media (max-width: 375px) {
+      .hero-header h1 { font-size: 1.8rem; }
+      .app-name { gap: 10px; }
+      .app-name span { font-size: 1rem; }
+      .logo { height: 35px; }
+      .menu-toggle { width: 40px; height: 40px; font-size: 1.3rem; }
+      .post-image { height: 180px; }
+      .post-excerpt { font-size: 0.9rem; }
+      .btn { padding: 10px 22px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
 
+  <div id="header-placeholder"></div>
 
-  
- 
-
-  <!-- Section des articles -->
+  <!-- ============================================================
+       SECTION ARTICLES
+       ============================================================ -->
   <section class="blog-section" id="articles">
     <div class="container">
       <div class="section-title">
         <h2>Articles du Blog</h2>
         <p>Découvrez nos conseils et expériences sur la vie à Accra</p>
       </div>
-      
+
       <div class="blog-posts">
         <!-- Article 1 -->
         <div class="post-card">
           <div class="post-image">
             <div class="post-category">VOYAGE</div>
-            <img src="passport.jpeg" alt="Eau à Accra" onerror="this.src='https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
+            <img src="passport.jpeg" alt="Préparez votre voyage"
+                 onerror="this.src='https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
           </div>
           <div class="post-content">
             <h2 class="post-title">Préparez votre voyage au Ghana</h2>
-            <p class="post-excerpt">La suite de cet article rassemble des informations cruciales à connaître avant le départ. Une lecture indispensable pour voyager sereinement et éviter les imprévus....</p>
+            <p class="post-excerpt">La suite de cet article rassemble des informations cruciales à connaître avant le départ. Une lecture indispensable pour voyager sereinement et éviter les imprévus...</p>
             <div class="post-meta">
               <span class="post-date"><i class="far fa-calendar"></i> 24 Janvier 2026</span>
               <a href="https://fla-gh.blogspot.com/search/label/Pr%C3%A9parez%20le%20voyage%20pour%20le%20Ghana" class="btn btn-primary">Lire l'article</a>
             </div>
           </div>
         </div>
-        
+
         <!-- Article 2 -->
         <div class="post-card">
           <div class="post-image">
             <div class="post-category">LA VIE AU GHANA</div>
-            <img src="accra.jpg" alt="Apprentissage des langues">
+            <img src="accra.jpg" alt="Vivre à Accra">
           </div>
           <div class="post-content">
             <h2 class="post-title">Vivre à Accra</h2>
@@ -874,12 +651,12 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Article 3 -->
         <div class="post-card">
           <div class="post-image">
             <div class="post-category">ÉDUCATION</div>
-            <img src="immers.jpeg" alt="Méthode d'apprentissage">
+            <img src="immers.jpeg" alt="Immersion linguistique">
           </div>
           <div class="post-content">
             <h2 class="post-title">Immersion dans la langue anglaise</h2>
@@ -891,195 +668,150 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Info Blog -->
       <div class="blog-info">
         <i class="fas fa-blog"></i>
         <p>Ce blog est publié sur <strong>FLA Ghana Blog</strong></p>
         <p>Retrouvez tous nos conseils pratiques pour la vie à Accra</p>
-        <div class="blogger-badge"></div>
+        <div class="blogger-badge">Blog officiel FLA</div>
       </div>
     </div>
   </section>
-  
-  <!-- Boutons flottants -->
+
+  <!-- ============================================================
+       BOUTON FLOTTANT BACK TO TOP
+       ============================================================ -->
   <div class="floating-btns">
     <button class="floating-btn" id="backToTopBtn" aria-label="Retour en haut">
       <i class="fas fa-arrow-up"></i>
     </button>
   </div>
 
+  <!-- ============================================================
+       SCRIPT UNIQUE — Hamburger + Back-to-top + Animations
+       ============================================================ -->
   <script>
-    // DOM Ready
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      
-      // Fermer le menu en cliquant sur un lien
-      const navLinks = document.querySelectorAll('.nav-tab a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuToggle = document.getElementById('menuToggle');
+      const navTabs = document.getElementById('navTabs');
+      const body = document.body;
+
+      // ---------- MENU HAMBURGER (identique à contactez-nous.html) ----------
+      if (menuToggle && navTabs) {
+        menuToggle.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          navTabs.classList.toggle('active');
+
+          const icon = this.querySelector('i');
           if (navTabs.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+
+        // Fermer au clic sur un lien
+        navTabs.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
             navTabs.classList.remove('active');
-            menuToggle.querySelector('i').classList.remove('fa-times');
-            menuToggle.querySelector('i').classList.add('fa-bars');
-            body.style.overflow = '';
-          }
-        });
-      });
-      
-      // Fermer le menu en cliquant en dehors
-      document.addEventListener('click', (e) => {
-        if (navTabs.classList.contains('active') && 
-            !navTabs.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-          navTabs.classList.remove('active');
-          menuToggle.querySelector('i').classList.remove('fa-times');
-          menuToggle.querySelector('i').classList.add('fa-bars');
-          body.style.overflow = '';
-        }
-      });
-      
-      // Fermer le menu avec la touche Échap
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navTabs.classList.contains('active')) {
-          navTabs.classList.remove('active');
-          menuToggle.querySelector('i').classList.remove('fa-times');
-          menuToggle.querySelector('i').classList.add('fa-bars');
-          body.style.overflow = '';
-        }
-      });
-      
-      // Bouton retour en haut
-      const backToTopBtn = document.getElementById('backToTopBtn');
-      
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-      
-      // Afficher/masquer le bouton retour en haut
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.style.opacity = '1';
-          backToTopBtn.style.visibility = 'visible';
-        } else {
-          backToTopBtn.style.opacity = '0';
-          backToTopBtn.style.visibility = 'hidden';
-        }
-      });
-      
-      // Initialiser le bouton comme masqué
-      backToTopBtn.style.opacity = '0';
-      backToTopBtn.style.visibility = 'hidden';
-      
-      // Animation des cartes d'articles
-      const postCards = document.querySelectorAll('.post-card');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, index * 150);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { 
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-      
-      postCards.forEach(card => {
-        observer.observe(card);
-      });
-      
-      // Barre de progression
-      window.addEventListener('scroll', () => {
-        const winHeight = window.innerHeight;
-        const docHeight = document.documentElement.scrollHeight;
-        const winScroll = window.pageYOffset;
-        const scrolled = (winScroll / (docHeight - winHeight)) * 100;
-        document.getElementById('progressBar').style.width = scrolled + '%';
-      });
-      
-      // Gestion de l'image logo manquante
-      const logo = document.querySelector('.logo');
-      if (logo) {
-        logo.onerror = function() {
-          const appName = document.querySelector('.app-name');
-          if (appName) {
-            appName.innerHTML = '<span>Foreign Language Academy GH</span>';
-          }
-        };
-      }
-      
-      // Préchargement des images pour éviter les flashs
-      const images = document.querySelectorAll('img');
-      images.forEach(img => {
-        if (img.complete) {
-          img.style.opacity = '1';
-        } else {
-          img.style.opacity = '0';
-          img.style.transition = 'opacity 0.3s ease';
-          img.addEventListener('load', function() {
-            this.style.opacity = '1';
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
           });
-        }
-      });
-    });
+        });
 
-    // Redimensionnement de la fenêtre
-    window.addEventListener('resize', function() {
-      const navTabs = document.getElementById('navTabs');
-      const menuToggle = document.getElementById('menuToggle');
-      
-      // Si l'écran est plus grand que 768px et le menu est ouvert, le fermer
-      if (window.innerWidth > 768 && navTabs.classList.contains('active')) {
-        navTabs.classList.remove('active');
-        menuToggle.querySelector('i').classList.remove('fa-times');
-        menuToggle.querySelector('i').classList.add('fa-bars');
-        document.body.style.overflow = '';
-      }
-    });
-
-   // Script pour le menu responsive
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.getElementById('menuToggle');
-      const navTabs = document.getElementById('navTabs');
-      
-      menuToggle.addEventListener('click', function() {
-        navTabs.classList.toggle('active');
-        
-        // Changer l'icône
-        const icon = this.querySelector('i');
-        if (navTabs.classList.contains('active')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        } else {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      });
-
-      // Fermer le menu mobile quand on clique sur un lien
-      const navLinks = document.querySelectorAll('.nav-tab a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          if (window.innerWidth <= 768) {
+        // Fermer en cliquant ailleurs
+        document.addEventListener('click', function (e) {
+          if (
+            navTabs.classList.contains('active') &&
+            !navTabs.contains(e.target) &&
+            !menuToggle.contains(e.target)
+          ) {
             navTabs.classList.remove('active');
             const icon = menuToggle.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
           }
         });
+
+        // Fermer avec Échap
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && navTabs.classList.contains('active')) {
+            navTabs.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+
+        // Fermer au redimensionnement > 992px
+        window.addEventListener('resize', function () {
+          if (window.innerWidth > 992 && navTabs.classList.contains('active')) {
+            navTabs.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      }
+
+      // ---------- BOUTON BACK TO TOP ----------
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      if (backToTopBtn) {
+        backToTopBtn.style.opacity = '0';
+        backToTopBtn.style.visibility = 'hidden';
+        backToTopBtn.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+
+        backToTopBtn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 300) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.visibility = 'visible';
+          } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.visibility = 'hidden';
+          }
+        });
+      }
+
+      // ---------- ANIMATION DES CARTES ----------
+      const postCards = document.querySelectorAll('.post-card');
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, index) {
+          if (entry.isIntersecting) {
+            setTimeout(function () {
+              entry.target.classList.add('visible');
+            }, index * 150);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      postCards.forEach(function (card) {
+        observer.observe(card);
       });
+
+      // ---------- GESTION LOGO MANQUANT ----------
+      const logo = document.querySelector('.logo');
+      if (logo) {
+        logo.onerror = function () {
+          const appName = document.querySelector('.app-name');
+          if (appName) {
+            appName.innerHTML = '<span>Foreign Language Academy GH</span>';
+          }
+        };
+      }
     });
   </script>
-<script src="header.js"></script>
-<script src="footer.js"></script>
+  <script src="footer.js"></script>
   <script src="header.js"></script>
-
 </body>
 </html>
