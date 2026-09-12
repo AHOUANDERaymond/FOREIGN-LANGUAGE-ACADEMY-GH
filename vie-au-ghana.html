@@ -103,117 +103,9 @@
       box-shadow: 0 10px 20px rgba(235, 146, 52, 0.3);
     }
     
-    /* ===== NAVIGATION ===== */
-    .navbar {
-      background: var(--nav-bg);
-      color: var(--white);
-      padding: 0;
-      box-shadow: 0 4px 12px rgba(13, 9, 130, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-    }
+   
     
-    .navbar::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-    }
-    
-    .app-name {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 0;
-      z-index: 1002;
-    }
-    
-    .logo {
-      height: 50px;
-      width: auto;
-      border-radius: 8px;
-      max-height: 50px;
-    }
-    
-    .app-name span {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.5px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-    
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 1001;
-      width: 44px;
-      height: 44px;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .nav-tabs {
-      display: flex;
-      list-style: none;
-      gap: 5px;
-    }
-    
-    .nav-tab {
-      position: relative;
-    }
-    
-    .nav-tab a {
-      display: block;
-      color: var(--white);
-      text-decoration: none;
-      padding: 20px 15px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      font-size: 0.9rem;
-    }
-    
-    .nav-tab a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: var(--accent);
-    }
-    
-    .nav-tab a.active {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    
-    .nav-tab a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: var(--accent);
-    }
+   
     
     /* ===== HERO HEADER ===== */
     .hero-header {
@@ -941,26 +833,8 @@
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <!-- Navigation -->
- <nav class="navbar">
-    <div class="nav-container">
-      <h1 class="app-name">
-        <img src="logo_fla.jpg" alt="Logo FLA" class="logo">
-        <span>Foreign Language Academy GH</span>
-      </h1>
-      <button class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="nav-tabs" id="navTabs">
-        <li class="nav-tab"><a href="index.html" class="active">Home</a></li>
-        <li class="nav-tab"><a href="programmes.html">Programmes</a></li>
-        <li class="nav-tab"><a href="extra-scolaire.html">Immersion</a></li>
-        <li class="nav-tab"><a href="vie-au-ghana.html">Vivre au Ghana</a></li>
-        <li class="nav-tab"><a href="alumini.html">Témoignages</a></li>
-        <li class="nav-tab"><a href="contactez-nous.html">Contacts</a></li>
-      </ul>
-    </div>
-  </nav>
+  
+ 
 
   <!-- Section des articles -->
   <section class="blog-section" id="articles">
@@ -1040,28 +914,7 @@
   <script>
     // DOM Ready
     document.addEventListener('DOMContentLoaded', function() {
-      // Gestion du menu mobile
-      const menuToggle = document.getElementById('menuToggle');
-      const navTabs = document.getElementById('navTabs');
-      const body = document.body;
       
-      if (menuToggle && navTabs) {
-        menuToggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          navTabs.classList.toggle('active');
-          const icon = this.querySelector('i');
-          
-          if (navTabs.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-            body.style.overflow = 'hidden';
-          } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-            body.style.overflow = '';
-          }
-        });
-      }
       
       // Fermer le menu en cliquant sur un lien
       const navLinks = document.querySelectorAll('.nav-tab a');
@@ -1226,7 +1079,7 @@
       });
     });
   </script>
-
+<script src="header.js"></script>
 <script src="footer.js"></script>
 
 </body>
